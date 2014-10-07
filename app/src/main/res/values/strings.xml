@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="title_activity_detailed_post">detailed post</string>
+    <string name="app_name">重邮飞讯</string>
+
+    <!-- 一键分享 -->
+    <string name="cancel">取消</string>
+    <string name="finish">完成</string>
+    <string name="sharing">分享操作正在后台进行…</string>
+    <string name="share_to">分享到</string>
+    <string name="share">分享</string>
+    <string name="multi_share">图文分享</string>
+    <string name="share_completed">分享成功</string>
+    <string name="share_canceled">分享已取消</string>
+    <string name="select_one_plat_at_least">请选择一个目标平台</string>
+    <string name="list_friends">%s的朋友</string>
+    <string name="share_failed">分享失败</string>
+    <string name="pull_to_refresh">下拉刷新</string>
+    <string name="release_to_refresh">松开刷新</string>
+    <string name="refreshing">刷新中…</string>
+    <string name="shake2share">摇晃手机！</string>
+    <string name="weibo_oauth_regiseter">应用授权</string>
+    <string name="website">http://www.shareSDK.cn</string>
+    <string name="weibo_upload_content">分享图片</string>
+    <string name="wechat_client_inavailable">目前您的微信版本过低或未安装微信，需要安装微信才能使用</string>
+    <string name="google_plus_client_inavailable">Google+ 版本过低或者没有安装，需要升级或安装Google+才能使用！</string>
+    <string name="qq_client_inavailable">QQ 版本过低或者没有安装，需要升级或安装QQ才能使用！</string>
+    <string name="pinterest_client_inavailable">Pinterest版本过低或者没有安装，需要升级或安装Pinterest才能使用！</string>
+    <string name="instagram_client_inavailable">Instagram版本过低或者没有安装，需要升级或安装Instagram才能使用！</string>
+    <string name="yixin_client_inavailable">目前您的易信版本过低或未安装，需要安装易信才能使用</string>
+    <string name="line_client_inavailable">目前您的Line版本过低或未安装，需要安装Line才能使用</string>
+    <string name="kakaotalk_client_inavailable">目前您的KakaoTalk版本过低或未安装，需要安装KakaoTalk才能使用</string>
+    <string name="kakaostory_client_inavailable">目前您的KakaoStory版本过低或未安装，需要安装KakaoStory才能使用</string>
+    <string name="sinaweibo">新浪微博</string>
+    <string name="tencentweibo">腾讯微博</string>
+    <string name="qzone">QQ空间</string>
+    <string name="wechat">微信好友</string>
+    <string name="wechatmoments">微信朋友圈</string>
+    <string name="wechatfavorite">微信收藏</string>
+    <string name="facebook">Facebook</string>
+    <string name="twitter">Twitter</string>
+    <string name="renren">人人网</string>
+    <string name="kaixin">开心网</string>
+    <string name="email">邮件</string>
+    <string name="shortmessage">信息</string>
+    <string name="sohumicroblog">搜狐微博</string>
+    <string name="sohusuishenkan">搜狐随身看</string>
+    <string name="neteasemicroblog">网易微博</string>
+    <string name="douban">豆瓣</string>
+    <string name="youdao">有道云笔记</string>
+    <string name="evernote">印象笔记</string>
+    <string name="linkedin">领英</string>
+    <string name="googleplus">Google+</string>
+    <string name="foursquare">FourSquare</string>
+    <string name="qq">QQ</string>
+    <string name="pinterest">Pinterest</string>
+    <string name="flickr">Flickr</string>
+    <string name="tumblr">Tumblr</string>
+    <string name="dropbox">Dropbox</string>
+    <string name="vkontakte">VK</string>
+    <string name="instagram">Instagram</string>
+    <string name="yixin">易信</string>
+    <string name="yixinmoments">易信朋友圈</string>
+    <string name="mingdao">明道</string>
+    <string name="kakaotalk">KakaoTalk</string>
+    <string name="kakaostory">KakaoStory</string>
+    <string name="line">Line</string>
+    <string name="share_to_qzone">分享到QQ空间</string>
+    <string name="share_to_qq">分享到QQ</string>
+    <string name="mingdao_share_content">网页分享</string>
+    <string name="share_to_mingdao">分享到明道</string>
+    <string name="share_to_qzone_default">来自%s的分享</string>
+    <string name="use_login_button">请改用“登录”按钮</string>
+
+    <!-- 评论与赞 -->
+    <integer name="app_version_code">3</integer>
+
+    <string name="app_version">1.0.2</string>
+    <string name="proj_name">ShareSDK Socialization</string>
+    <string name="sm_item_comment_like">评论与赞</string>
+    <string name="share_content">ShareSDK for Android不仅集成简单、支持如QQ好友、微信、新浪微博、腾讯微博等所有社交平台，而且还有强大的统计分析管理后台，实时了解用户、信息流、回流率、传播效应等数据，详情见官网http://sharesdk.cn @ShareSDK</string>
+    <string name="share_content_short">ShareSDK不仅集成简单、支持如微信、新浪微博、腾讯微博等社交平台，而且还有强大的统计分析管理后台，实时了解用户、信息流、回流率、传播效应等数据，详情见官网http://sharesdk.cn @ShareSDK</string>
+    <string name="comment_like_id">ssdk20131220190000</string>
+    <string name="comment_like_title">ShareSDK“评论与赞”模块发布</string>
+    <string name="comment_like_publich_time">2013-12-20 19:00</string>
+    <string name="comment_like_author">ShareSDK</string>
+    <string name="comment_like_comment_list">跟帖</string>
+    <string name="sharesdk">ShareSDK评论与赞组件</string>
+
+    <!-- 详细界面 -->
+    <string name="ssdk_socialization_let_me_say">我来说两句</string>
+    <string name="ssdk_socialization_comment_like_author_title">来源：</string>
+    <string name="ssdk_socialization_comment_like_comment_list_title">评论列表</string>
+    <string name="ssdk_socialization_hot_list">热门评论</string>
+    <string name="ssdk_socialization_new_list">最新评论</string>
+    <string name="ssdk_socialization_right_now">刚刚</string>
+    <string name="ssdk_socialization_xx_min_before">%s分钟前</string>
+    <string name="ssdk_socialization_xx_hour_before">%s小时前</string>
+    <string name="ssdk_socialization_reply_page_title">评论</string>
+    <string name="ssdk_socialization_reply_to">回复 %s</string>
+    <string name="ssdk_socialization_reply">回复</string>
+    <string name="ssdk_socialization_copy">复制</string>
+    <string name="ssdk_socialization_text_copied">文本已经复制</string>
+    <string name="ssdk_socialization_click_to_unfold">展开隐藏评论</string>
+    <string name="ssdk_socialization_loading_next">正在加载下一页…</string>
+    <string name="ssdk_socialization_failed_to_reply">评论失败</string>
+    <string name="ssdk_socialization_reply_succeeded">评论已发送</string>
+    <string name="ssdk_socialization_not_yet_authorized">尚未授权</string>
+    <string name="ssdk_socialization_auth_failed">授权失败</string>
+    <string name="ssdk_socialization_selsect_account">请选择授权方式</string>
+    <string name="ssdk_socialization_replying">评论发送中…</string>
+    <string name="ssdk_socialization_like_failed">称赞失败</string>
+    <string name="ssdk_socialization_spam_reply">评论内容不合法，请重新填写</string>
+    <string name="ssdk_socialization_you_have_liked_the_topic">已经赞了此话题</string>
+    <string name="ssdk_socialization_select_account">选择发表评论帐号：</string>
+    <string name="ssdk_socialization_select_another">添加更多帐号…</string>
+    <string name="ssdk_socialization_change_account">更换帐号</string>
+    <string name="ssdk_socialization_bind_account">绑定帐号</string>
+    <string name="ssdk_socialization_last_refresh_time">上次刷新时间：%s</string>
+    <string name="ssdk_socialization_replay_too_frequently">回复过于频繁，请稍后再回复</string>
+    <string name="ssdk_socialization_comment_rejected">该评论已被屏蔽</string>
+    <string name="ssdk_socialization_comment_list_is_empty">还没有评论哦\n单击页面抢沙发\nempty…</string>
+    <string name="ssdk_socialization_pull_to_refresh">下拉刷新</string>
+    <string name="ssdk_socialization_release_to_refresh">松开刷新</string>
+    <string name="ssdk_socialization_refreshing">刷新中…</string>
+    <string name="ssdk_socialization_share">分享</string>
+    <string name="ssdk_socialization_nickname">匿名用户</string>
+    <string name="ssdk_socialization_progressdialog_msg">请等待......</string>
+    <string name="ssdk_socialization_progressdialog_auth">授权</string>
+    <string name="ssdk_socialization_progressdialog_do_authing">分享需要先授权......</string>
+    <string name="ssdk_socialization_comment_error">内容包含敏感字符</string>
+    <string name="ssdk_socialization_comment_too_short">字符长度不足</string>
+    <string name="ssdk_socialization_comment_too_long">字符长度过长</string>
+    <string name="ssdk_socialization_comment_repeat">重复字符过多</string>
+
+    <!-- example -->
+    <string name="more">更多</string>
+    <string name="sm_item_demo">接口</string>
+    <string name="sm_item_auth">授权</string>
+    <string name="sm_item_wechat">微信</string>
+    <string name="sm_item_yixin">易信</string>
+    <string name="sm_item_customer">自定义接口</string>
+    <string name="sm_item_fl_weibo">关注新浪微博</string>
+    <string name="sm_item_fl_tc">关注腾讯微博</string>
+    <string name="sm_item_share_view">摇一摇截屏分享</string>
+    <string name="sm_item_visit_website">关注官方网站</string>
+    <string name="sm_item_about">Demo版本 Ver. %s</string>
+    <string name="title_activity_about">关于</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_feedback">反馈意见</string>
+    <string name="title_activity_search">搜索</string>
+
+</resources>

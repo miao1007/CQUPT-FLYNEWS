@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/Background.Default"
+    android:paddingLeft="40dp"
+    android:layout_height="match_parent"
+    android:paddingTop="100dp"
+    android:paddingRight="40dp"
+    android:paddingBottom="13dp">
+
+    <TextView
+        android:id="@+id/activity_login_by_qzone"
+        android:singleLine="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/qq_login"
+        android:gravity="center"
+        android:text="使用QQ空间登陆"
+        android:textSize="18dp" >
+    </TextView>
+
+    <TextView
+        android:singleLine="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="15dp"
+        android:gravity="center"
+        android:text="使用微博登陆"
+        android:textSize="18dp"
+        android:id="@+id/activity_login_by_sinaweibo"
+        android:background="@drawable/weibo_login"/>
+
+</LinearLayout>

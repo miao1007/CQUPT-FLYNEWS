@@ -1,0 +1,158 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:orientation="vertical"
+    android:background="#fff3f3f3"
+    android:layout_height="fill_parent">
+
+    <ScrollView
+
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/content_srollview"
+        android:orientation="vertical"
+        android:layout_above="@+id/linearLayout"
+        android:layout_alignParentTop="true">
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:orientation="vertical"
+            android:layout_height="fill_parent">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="horizontal"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp">
+
+                <TextView
+                    android:id="@+id/activity_detailed_textview_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="#ffffff"
+                    android:maxLength="4"
+
+                    android:background="@color/SettingsFragment.Child.Pressed"
+                    android:singleLine="true"
+                    android:ellipsize="marquee"
+                    android:text="科技新闻"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="45dp"
+                    android:paddingRight="45dp"
+                    android:paddingBottom="6dp"
+                    android:paddingTop="6dp" />
+
+                <TextView
+                    android:id="@+id/activity_detailed_textview_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="#ffbfbfbf"
+                    android:text="N天前"
+                    android:gravity="right" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="iphone6国行将于十月二十六日上市，买买买"
+                android:id="@+id/activity_detailed_textview_title"
+                android:textSize="30dp"
+                android:textColor="#ff000000"
+                android:maxLines="2"
+                android:paddingLeft="10dp"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="#ffc6c6c6"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp" />
+
+            <WebView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/content_webview"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp"
+        android:paddingLeft="30dp"
+        android:paddingTop="8dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/ssdk_social_cl_floor_mid"
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout">
+
+        <CheckBox
+            android:id="@+id/activity_detailed_button_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#ff000000"
+            android:text="0"
+            android:button="@drawable/activity_detailed_menu_like_bg" />
+
+        <CheckBox
+            android:id="@+id/activity_detailed_button_reply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="#ff000000"
+            android:layout_weight="1"
+            android:button="@drawable/ssdk_social_toolbar_reply" />
+
+        <CheckBox
+            android:id="@+id/activity_detailed_button_share"
+            android:textColor="#ff000000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@drawable/ssdk_social_toolbar_share"/>
+
+        <CheckBox
+            android:id="@+id/activity_detailed_button_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@drawable/activity_detailed_menu_more_bg"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#e0000000"
+        android:visibility="gone"
+        android:id="@+id/activity_detailed_button_more_layout"
+        android:layout_above="@+id/linearLayout">
+
+        <include
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/activity_detailed_post_include_settings"
+            layout="@layout/activity_detailed_post_settings"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+
+
+</RelativeLayout>
+
+

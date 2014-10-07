@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffececec"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            style="@style/SettingFragment.Layout.Parent">
+
+            <!--反馈意见-->
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                style="@style/SettingFragment.Layout.Child"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/frag_search_edittext_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            style="@style/SettingFragment.Layout.Parent">
+            <!--退出-->
+
+
+            <TextView
+                style="@style/SettingFragment.Layout.Child"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:id="@+id/frag_search_dosearch"
+                android:background="#ff2edc09"
+                android:gravity="center"
+                android:text="搜索"
+                android:textColor="#ff333333"
+                android:textSize="16.0dip" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

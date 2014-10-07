@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffececec"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout style="@style/SettingFragment.Layout.Parent">
+
+            <!--第三方登陆-->
+            <LinearLayout style="@style/SettingFragment.Layout.Child"
+                android:id="@+id/frag_setting_login">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dip"
+                    android:layout_marginLeft="12.0dip"
+                    android:layout_marginRight="4dp"
+                    android:src="@drawable/ic_account" />
+                <TextView
+                    android:text="点击登陆"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="12.0dip"
+                    android:textColor="#ff333333"
+                    android:textSize="16.0dip" />
+            </LinearLayout>
+
+            <!--  文字大小 	-->
+
+            <!-- 清除缓存 -->
+            <LinearLayout style="@style/SettingFragment.Layout.Child"
+                android:id="@+id/frag_setting_clean_cache">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dip"
+                    android:layout_marginLeft="12.0dip"
+                    android:layout_marginRight="4dp"
+                    android:src="@drawable/ic_clear_cache" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="12.0dip"
+                    android:text="清除授权"
+                    android:textColor="#ff333333"
+                    android:textSize="16.0dip" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <include
+            layout="@layout/activity_detailed_post_settings"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/frag_setting_include_text_size" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            style="@style/SettingFragment.Layout.Parent">
+
+            <!--反馈意见-->
+            <LinearLayout
+                style="@style/SettingFragment.Layout.Child"
+                android:id="@+id/frag_setting_feedback">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dip"
+                    android:layout_marginLeft="12.0dip"
+                    android:layout_marginRight="4dp"
+                    android:src="@drawable/ic_feedback" />
+                <TextView
+                    android:text="反馈意见"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="12.0dip"
+                    android:textColor="#ff333333"
+                    android:textSize="16.0dip" />
+            </LinearLayout>
+
+            <!--关于我们-->
+            <LinearLayout
+                style="@style/SettingFragment.Layout.Child"
+                android:id="@+id/frag_setting_about_us">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dip"
+                    android:layout_marginLeft="12.0dip"
+                    android:layout_marginRight="4dp"
+                    android:src="@drawable/ic_about_us" />
+                <TextView
+                    android:text="关于我们"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="12.0dip"
+                    android:textColor="#ff333333"
+                    android:textSize="16.0dip" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            style="@style/SettingFragment.Layout.Parent">
+            <!--退出-->
+            <LinearLayout
+                style="@style/SettingFragment.Layout.Child"
+                android:background="#ffdc0000"
+                android:id="@+id/frag_setting_exit">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:gravity="center"
+                    android:text="退出"
+                    android:textColor="#ff333333"
+                    android:textSize="16.0dip" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

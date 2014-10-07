@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/CustomerActionBarStyle</item>
+    </style>
+
+    <!--sliding menu theme -->
+    <style name="MenuDrawerStyle" parent="AppTheme">
+
+        <item name="mdMenuBackground">@color/md__customerBackground</item>
+        <item name="mdContentBackground">@color/SettingsFragment.Child.Normal</item>
+        <item name="mdDropShadowEnabled">false</item>
+
+        <item name="android:actionBarStyle">@style/CustomerActionBarStyle</item>
+        <item name="mdActiveIndicator">@drawable/menu_arrow_start</item>
+        <item name="mdMenuSize">@dimen/slidingmenu_default</item>
+        <item name="mdDrawerOpenUpContentDescription">@string/md__drawerOpenIndicatorDesc</item>
+        <item name="mdDrawerClosedUpContentDescription">@string/md__drawerClosedIndicatorDesc</item>
+
+
+    </style>
+
+
+
+</resources>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="@dimen/slidingmenu_default"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="科技新闻"
+        android:textColor="#4d4d4d"
+        android:id="@+id/adapter_slidingmenu_categories_tpye"
+        android:layout_weight="1"
+        android:textSize="18sp"
+        android:layout_marginLeft="16dp"
+        android:textIsSelectable="false"
+        android:padding="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="9"
+        android:textColor="#ff000000"
+        android:textSize="10sp"
+        android:background="@drawable/slidingmenu_bg_listview"
+        android:id="@+id/adapter_slidingmenu_categories_counts"
+        android:layout_marginRight="16dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical|center_horizontal" />
+</LinearLayout>

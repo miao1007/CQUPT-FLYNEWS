@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffececec"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout style="@style/SettingFragment.Layout.Parent">
+
+            <!--第三方登陆-->
+            <LinearLayout
+                style="@style/SettingFragment.Layout.Child">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dip"
+                    android:layout_marginLeft="12.0dip"
+                    android:layout_marginRight="4dp"
+                    android:src="@drawable/ic_account" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="12.0dip"
+                    android:text="程序简介"
+                    android:textColor="#ff333333"
+                    android:textSize="16.0dip" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_marginRight="32dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:text="重邮飞讯是一款基于重邮最新资讯的社会化阅读软件，该软件支持使用新浪微博等第三方账号参与评论，分享文章，投稿新闻，同时它是开源的，你甚至可以参与开发"
+                    android:textColor="#ff333333"
+                    android:textSize="16.0dip" />
+            </LinearLayout>
+
+            <!--  项目地址 	-->
+            <LinearLayout
+                style="@style/SettingFragment.Layout.Child">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dip"
+                    android:layout_marginLeft="12.0dip"
+                    android:layout_marginRight="4dp"
+                    android:src="@drawable/ic_article_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="12.0dip"
+                    android:text="项目地址"
+                    android:textColor="#ff333333"
+                    android:textSize="16.0dip" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_height="wrap_content"
+                    android:autoLink="web"
+                    android:text="http://www.github.com/miao1007"
+                    android:textColor="#ff333333"
+                    android:textSize="16.0dip" />
+
+            </LinearLayout>
+
+            <!-- 清除缓存 -->
+            <LinearLayout
+                style="@style/SettingFragment.Layout.Child">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dip"
+                    android:layout_marginLeft="12.0dip"
+                    android:layout_marginRight="4dp"
+                    android:src="@drawable/ic_clear_cache" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="12.0dip"
+                    android:text="联系方式"
+                    android:textColor="#ff333333"
+                    android:textSize="16.0dip" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_height="wrap_content"
+                    android:autoLink="email"
+                    android:text="miao1007@gmail.com"
+                    android:textColor="#ff333333"
+                    android:textSize="16.0dip" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

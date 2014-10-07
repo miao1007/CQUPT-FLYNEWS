@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffececec"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout style="@style/SettingFragment.Layout.Parent">
+
+            <!--您的姓名-->
+            <LinearLayout
+                style="@style/SettingFragment.Layout.Child">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dip"
+                    android:layout_marginLeft="12.0dip"
+                    android:layout_marginRight="4dp"
+                    android:src="@drawable/ic_account" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="12.0dip"
+                    android:text="您的姓名"
+                    android:textColor="#ff333333"
+                    android:textSize="16.0dip" />
+
+                <EditText
+                    android:id="@+id/frag_commit_editText_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <!--  您的邮箱 	-->
+            <LinearLayout
+
+                style="@style/SettingFragment.Layout.Child">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dip"
+                    android:layout_marginLeft="12.0dip"
+                    android:layout_marginRight="4dp"
+                    android:src="@drawable/ic_article_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="12.0dip"
+                    android:text="您的邮箱"
+                    android:textColor="#ff333333"
+                    android:textSize="16.0dip" />
+
+                <EditText
+                    android:id="@+id/frag_commit_editText_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textEmailAddress" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            style="@style/SettingFragment.Layout.Parent">
+
+            <LinearLayout
+                android:id="@+id/frag_setting_feedback"
+                style="@style/SettingFragment.Layout.Child">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dip"
+                    android:layout_marginLeft="12.0dip"
+                    android:layout_marginRight="4dp"
+                    android:src="@drawable/ic_feedback" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="12.0dip"
+                    android:text="投稿内容"
+                    android:textColor="#ff333333"
+                    android:textSize="16.0dip"
+                    android:id="@+id/frag_commit_textview_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                style="@style/SettingFragment.Layout.Child"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/frag_commit_editText_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/frag_commit_commit"
+            style="@style/SettingFragment.Layout.Parent"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1.0"
+            android:background="#ff2edc09"
+            android:gravity="center"
+            android:text="提交"
+            android:textColor="#ff333333"
+            android:textSize="16.0dip" />
+
+
+    </LinearLayout>
+
+</LinearLayout>
