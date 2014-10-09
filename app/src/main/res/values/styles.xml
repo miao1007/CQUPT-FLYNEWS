@@ -65,7 +65,32 @@
 
 
     <style name="CustomerActionBarStyle" parent="android:Widget.Holo.ActionBar.Solid">
-        <item name="android:background">@color/actionbar_bg</item>
+        <item name="android:background">@color/android_l_500</item>
+    </style>
+
+    <!--sliding menu choices-->
+    <style name="SlidingMenuItem">
+        <item name="android:background">@drawable/slidingmenu_bg_selector</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <style name="SlidingMenuItem.White" parent="SlidingMenuItem">
+        <item name="android:background">@drawable/slidingmenu_bg_selector_white</item>
+    </style>
+     <style name="SlidingMenuItem_Image">
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_height">24dp</item>
+        <item name="android:layout_width">24dp</item>
+    </style>
+    <style name="SlidingMenuItem_TextView">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginLeft">16dp</item>
     </style>
 
 

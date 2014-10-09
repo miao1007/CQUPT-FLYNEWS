@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="false"
-            android:src="@drawable/menu_header_bg"
+            android:src="@drawable/slidingmenu_header_bg"
             android:scaleType="matrix" />
 
         <TextView

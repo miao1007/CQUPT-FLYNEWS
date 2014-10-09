@@ -5,6 +5,6 @@
     android:id="@+id/slidingmenu_content_listview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#ffffff" />
+    android:divider="@color/android_l_100"/>
 
 

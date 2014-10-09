@@ -12,7 +12,6 @@
         <item name="mdDropShadowEnabled">false</item>
 
         <item name="android:actionBarStyle">@style/CustomerActionBarStyle</item>
-        <item name="mdActiveIndicator">@drawable/menu_arrow_start</item>
         <item name="mdMenuSize">@dimen/slidingmenu_default</item>
         <item name="mdDrawerOpenUpContentDescription">@string/md__drawerOpenIndicatorDesc</item>
         <item name="mdDrawerClosedUpContentDescription">@string/md__drawerClosedIndicatorDesc</item>

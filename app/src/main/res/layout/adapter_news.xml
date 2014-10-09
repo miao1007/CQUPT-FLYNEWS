@@ -8,7 +8,7 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/shadow_bg"
+        android:background="@drawable/home_list_shadow_bg"
         android:orientation="vertical"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp">
@@ -40,8 +40,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
                 android:textColor="#ffffff"
-
-                android:background="#80000000"
+                android:background="@drawable/home_list_background"
                 android:singleLine="true"
                 android:ellipsize="marquee"
                 android:text="我国将首发自制知识产权的操作系统"
@@ -56,6 +55,17 @@
                 android:layout_alignLeft="@+id/listview_news_imageview_thumb"
                 android:layout_alignStart="@+id/listview_news_imageview_thumb"
                 android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="分类：未分类"
+                android:id="@+id/listview_news_textview_category"
+                android:textSize="14sp"
+                android:background="@color/android_l_200"
+                android:layout_margin="8dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="4dp" />
 
         </RelativeLayout>
 
@@ -87,17 +97,6 @@
                 android:maxLength="139"
                 android:textSize="14sp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:text="分类：未分类"
-                android:paddingLeft="4dp"
-                android:id="@+id/listview_news_textview_category"
-                android:textSize="14sp"
-                android:textColor="#febb65"
-                android:paddingTop="4dp"
-                android:gravity="left" />
 
         </LinearLayout>
 

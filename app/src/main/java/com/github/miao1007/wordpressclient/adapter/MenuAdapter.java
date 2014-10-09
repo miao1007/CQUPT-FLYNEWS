@@ -1,4 +1,4 @@
-package com.github.miao1007.wordpressclient.slidingmenu;
+package com.github.miao1007.wordpressclient.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -67,7 +67,7 @@ public class MenuAdapter extends BaseAdapter {
 
         if (position < INCLUDE_VIEW_COUNT){
             switch (position){
-                case 0:view = LayoutInflater.from(context).inflate(R.layout.slidingmenu_header, null);
+                case 0:view = LayoutInflater.from(context).inflate(R.layout.slidingmenu_header_user_info, null);
                     TextView textView_username = (TextView)view.findViewById(R.id.slidingmenu_header_username);
                     ImageView imageView_avatar = (ImageView)view.findViewById(R.id.slidingmenu_header_avatar);
                     textView_username.setText(avatarandname.get("name"));
@@ -103,6 +103,7 @@ public class MenuAdapter extends BaseAdapter {
                             })
                             .into(imageView_avatar);
                     break;
+                //case 1:view = LayoutInflater.from(context).inflate(R.layout.slidingmenu_divider, null);break;
                 case 1:view = LayoutInflater.from(context).inflate(R.layout.slidingmenu_choice_home, null);break;
                 case 2:view = LayoutInflater.from(context).inflate(R.layout.slidingmenu_choice_search, null);break;
                 case 3:view = LayoutInflater.from(context).inflate(R.layout.slidingmenu_choice_settings, null);break;
@@ -110,11 +111,17 @@ public class MenuAdapter extends BaseAdapter {
             }
             return view;
         } else {
-            view = LayoutInflater.from(context).inflate(R.layout.adapter_slidingmenu_categories , null);
-            TextView category_type = (TextView)view.findViewById(R.id.adapter_slidingmenu_categories_tpye);
-            TextView category_count = (TextView)view.findViewById(R.id.adapter_slidingmenu_categories_counts);
+
+            if ( position %2 == 1 ){
+                view = LayoutInflater.from(context).inflate(R.layout.slidingmenu_categories_white, null);
+            } else {
+                view = LayoutInflater.from(context).inflate(R.layout.slidingmenu_categories, null);
+            }
+
+            TextView category_type = (TextView)view.findViewById(R.id.slidingmenu_categories_tpye);
+            //TextView category_count = (TextView)view.findViewById(R.id.slidingmenu_categories_counts);
             category_type.setText(getItem(position).getTitle());
-            category_count.setText(getItem(position).getPostCount() + "");
+            //category_count.setText(getItem(position).getPostCount() + "");
             //holder.category_count.setText(getItem(position).getPostCount());
             return view;
         }

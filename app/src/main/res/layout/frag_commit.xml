@@ -37,9 +37,8 @@
                     android:id="@+id/frag_commit_editText_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:layout_marginRight="8dp" />
             </LinearLayout>
 
             <!--  您的邮箱 	-->
@@ -68,7 +67,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textEmailAddress"
+                    android:layout_marginRight="8dp" />
 
             </LinearLayout>
 

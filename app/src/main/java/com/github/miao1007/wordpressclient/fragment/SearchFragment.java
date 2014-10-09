@@ -16,7 +16,6 @@ import com.github.miao1007.wordpressclient.R;
 public class SearchFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        getActivity().getActionBar().setIcon(R.drawable.ic_search);
         super.onCreate(savedInstanceState);
     }
 

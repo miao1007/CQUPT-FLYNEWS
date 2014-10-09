@@ -8,15 +8,14 @@
         style="@style/SlidingMenuItem.White">
 
         <ImageView
+            android:id="@+id/imageView1"
             style="@style/SlidingMenuItem_Image"
-            android:src="@drawable/ic_menu_settings"/>
+            android:src="@drawable/ic_menu_cornor_categories" />
 
         <TextView
+            android:id="@+id/slidingmenu_categories_tpye"
             style="@style/SlidingMenuItem_TextView"
-            android:text="设置" />
-
-
+            android:text="投稿"/>
     </LinearLayout>
-
 
 </LinearLayout>

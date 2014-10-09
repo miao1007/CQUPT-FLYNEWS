@@ -4,12 +4,22 @@
     <color name="md__transparent">#00000000</color>
     <color name="md__customerBackground">#ffffff</color>
     <color name="text_color_menu">#ff868788</color>
-    <color name="actionbar_bg">#1e874a</color>
+>
 
     <color name="SettingsFragment.Child.Default">#ffffff</color>
     <color name="SettingsFragment.Child.Normal">#ffe8542f</color>
     <color name="SettingsFragment.Child.Pressed">#ff465de8</color>
     <color name="Background.Default">#ffececec</color>
+
+    <!--android design style cqupt logo green -->
+    <!--I will use 100 500 700-->
+    <color name="android_l_50">#d0f8ce</color>
+    <color name="android_l_100">#a3e9a4</color>
+    <color name="android_l_200">#72d572</color>
+    <color name="android_l_300">#42bd41</color>
+    <color name="android_l_400">#2baf2b</color>
+    <color name="android_l_500">#259b24</color>
+    <color name="android_l_700">#0a7e07</color>
 
 
 </resources>

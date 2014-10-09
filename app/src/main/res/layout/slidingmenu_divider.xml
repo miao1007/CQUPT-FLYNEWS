@@ -5,15 +5,15 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        style="@style/SlidingMenuItem.White">
+        style="@style/SlidingMenuItem.White"
+        android:layout_height="56dp">
 
-        <ImageView
-            style="@style/SlidingMenuItem_Image"
-            android:src="@drawable/ic_menu_settings"/>
 
         <TextView
+            android:id="@+id/textView1"
             style="@style/SlidingMenuItem_TextView"
-            android:text="设置" />
+            android:textSize="20sp"
+            android:text="选项" />
 
 
     </LinearLayout>

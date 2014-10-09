@@ -49,8 +49,9 @@ public abstract class BaseFragment extends Fragment implements  AdapterView.OnIt
             @Override
             public void handleMessage(Message msg) {
                 if (msg.what == REFRESH_TITLE){
-                    String title = (String)msg.obj == null ? (String)msg.obj : "主页";
-                    getActivity().getActionBar().setTitle(title);
+                    if (msg.obj instanceof String){
+                        getActivity().getActionBar().setTitle((String)msg.obj);
+                    }
                 }
             }
         };
@@ -63,9 +64,6 @@ public abstract class BaseFragment extends Fragment implements  AdapterView.OnIt
         listView = (ListView) view.findViewById(R.id.main_listview);
         listView.setOnItemClickListener(this);
         adapter = new PostAdapter(posts, getActivity());
-//        SwingBottomInAnimationAdapter swingBottomInAnimationAdapter = new SwingBottomInAnimationAdapter(adapter);
-//        swingBottomInAnimationAdapter.setAbsListView(listView);
-//        swingBottomInAnimationAdapter.getViewAnimator().setAnimationDelayMillis(350);
         listView.setOnScrollListener(this);
 //        listView.setAdapter(swingBottomInAnimationAdapter);
         listView.setAdapter(adapter);

@@ -18,6 +18,27 @@ public class CommentResult {
     String date;
     String content;
     String parent;
+    String error;
+
+
+    public CommentResult(String status) {
+        this.status = status;
+    }
+
+    public CommentResult() {
+    }
+
+    static public CommentResult getRepeatCommentResult(){
+        return new CommentResult("检测到重复回复，您似乎已经提交过这条回复了！");
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
 
     public String getStatus() {
         return status;
