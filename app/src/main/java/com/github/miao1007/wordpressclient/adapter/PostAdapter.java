@@ -80,7 +80,7 @@ public class PostAdapter extends BaseAdapter {
         if (post.getThumbnail_images() != null) {
             Picasso.with(context)
                     .load(post.getThumbnail_images().getMedium().getUrl())
-                    .placeholder(R.drawable.image_thumb_loading)
+                    .placeholder(R.drawable.android_load_loading)
                     .into(holder.image_thumb);
         }
 

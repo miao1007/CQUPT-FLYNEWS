@@ -19,11 +19,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.github.miao1007.wordpressclient.R;
+import com.github.miao1007.wordpressclient.adapter.MenuAdapter;
 import com.github.miao1007.wordpressclient.fragment.CategoryFragment;
 import com.github.miao1007.wordpressclient.fragment.CommitFragmnet;
 import com.github.miao1007.wordpressclient.fragment.SettingFragment;
 import com.github.miao1007.wordpressclient.model.post.Category;
-import com.github.miao1007.wordpressclient.slidingmenu.MenuAdapter;
 import com.github.miao1007.wordpressclient.utils.WordPressUtils;
 
 import net.simonvt.menudrawer.MenuDrawer;
@@ -43,6 +43,7 @@ public class HomeActivity extends Activity implements MenuAdapter.MenuListener, 
     protected HashMap<String, String> avatarandname = new HashMap<String, String>();
     String currentTAG = "home";
 
+    private static final int INCLUDE_VIEW_COUNT = 5;
     private ImageView imageView;
     private TextView textView;
 
@@ -64,22 +65,23 @@ public class HomeActivity extends Activity implements MenuAdapter.MenuListener, 
     @Override
     protected void onCreate(Bundle inState) {
         super.onCreate(inState);
+        //实例化菜单View和内容页，注意内容页只是一个Frame容器，用于替换Fragment
         View menuView = LayoutInflater.from(this).inflate(R.layout.slidingmenu_list, null);
         View contentView = LayoutInflater.from(HomeActivity.this).inflate(R.layout.container_frame, null);
+        //菜单view实际上就是一个listview
         mListView = (ListView) menuView.findViewById(R.id.slidingmenu_content_listview);
-
-
         mAdapter = new MenuAdapter(this, categories, avatarandname);
         mListView.setAdapter(mAdapter);
+        //这个监听用于替换fragment
         mListView.setOnItemClickListener(this);
-
+        //初始化MenuDrawer，可以通过API和英文字面上了解意义
         mMenuDrawer = MenuDrawer.attach(this, MenuDrawer.Type.BEHIND, Position.LEFT, MenuDrawer.MENU_DRAG_WINDOW);
         mMenuDrawer.setOnDrawerStateChangeListener(this);
         mMenuDrawer.setSlideDrawable(R.drawable.ic_drawer);
         mMenuDrawer.setDrawerIndicatorEnabled(true);
         mMenuDrawer.setMenuView(menuView);
         mMenuDrawer.setContentView(contentView);
-        mListView = (ListView) mMenuDrawer.getMenuView();
+        //同步文章分类，从服务器抓取
         syncMenuItems();
     }
 
@@ -118,7 +120,7 @@ public class HomeActivity extends Activity implements MenuAdapter.MenuListener, 
         FragmentManager manager = getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         System.out.println("currentTAG = " + currentTAG);
-        if (i < 5) {
+        if (i < INCLUDE_VIEW_COUNT) {
             switch (i) {
                 //login
                 case 0:
@@ -129,6 +131,7 @@ public class HomeActivity extends Activity implements MenuAdapter.MenuListener, 
                     startActivityForResult(intent,3);
                     currentTAG = "login";
                     break;
+                //case 1:break;
                 //home
                 case 1:
                     if (manager.findFragmentByTag(currentTAG) != null) {

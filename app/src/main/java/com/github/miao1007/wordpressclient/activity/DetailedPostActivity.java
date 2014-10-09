@@ -47,17 +47,18 @@ public class DetailedPostActivity extends Activity implements CompoundButton.OnC
     CheckBox menu_reply;
     RelativeLayout layout;
 
-
+    //Intent Extra
     private Post post;
     private String id;
     private String title;
     private String date;
     private String author;
-    private int likecount;
     private String category;
     private String url;
     private String excerpt;
     private String thumb_image;
+
+    private int likecount;
     //private ArrayList<String,Objects>
 
 
@@ -76,19 +77,19 @@ public class DetailedPostActivity extends Activity implements CompoundButton.OnC
         excerpt = getIntent().getStringExtra("excerpt");
         url = getIntent().getStringExtra("url");
         thumb_image = getIntent().getStringExtra("thumb");
-        if (getIntent().getStringExtra("category") != null){
+        if (getIntent().getStringExtra("category") != null) {
             category = getIntent().getStringExtra("category");
         } else {
             category = "未分类";
         }
 
-        content_srollview = (ScrollView)findViewById(R.id.content_srollview);
+        content_srollview = (ScrollView) findViewById(R.id.content_srollview);
         content_webview = (WebView) findViewById(R.id.content_webview);
         content_title = (TextView) findViewById(R.id.activity_detailed_textview_title);
         content_title.setText(title);
         content_date = (TextView) findViewById(R.id.activity_detailed_textview_date);
         content_date.setText(date);
-        content_category = (TextView)findViewById(R.id.activity_detailed_textview_category);
+        content_category = (TextView) findViewById(R.id.activity_detailed_textview_category);
         content_category.setText(category);
 
         menu_like = (CheckBox) findViewById(R.id.activity_detailed_button_like);
@@ -100,20 +101,20 @@ public class DetailedPostActivity extends Activity implements CompoundButton.OnC
         includeView.findViewById(R.id.button_font_small).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                content_webview.getSettings().setTextZoom((content_webview.getSettings().getTextZoom() - 20)>20? (content_webview.getSettings().getTextZoom() - 20):20);
-                SharedPreferences preferences = getSharedPreferences("textsize",0);
+                content_webview.getSettings().setTextZoom((content_webview.getSettings().getTextZoom() - 20) > 20 ? (content_webview.getSettings().getTextZoom() - 20) : 20);
+                SharedPreferences preferences = getSharedPreferences("textsize", 0);
                 SharedPreferences.Editor editor = preferences.edit();
-                editor.putInt("size",content_webview.getSettings().getTextZoom());
+                editor.putInt("size", content_webview.getSettings().getTextZoom());
                 editor.commit();
             }
         });
         includeView.findViewById(R.id.button_font_large).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                content_webview.getSettings().setTextZoom((content_webview.getSettings().getTextZoom() + 20)<200? (content_webview.getSettings().getTextZoom() + 20):200);
-                SharedPreferences preferences = getSharedPreferences("textsize",0);
+                content_webview.getSettings().setTextZoom((content_webview.getSettings().getTextZoom() + 20) < 200 ? (content_webview.getSettings().getTextZoom() + 20) : 200);
+                SharedPreferences preferences = getSharedPreferences("textsize", 0);
                 SharedPreferences.Editor editor = preferences.edit();
-                editor.putInt("size",content_webview.getSettings().getTextZoom());
+                editor.putInt("size", content_webview.getSettings().getTextZoom());
                 editor.commit();
             }
         });
@@ -125,7 +126,6 @@ public class DetailedPostActivity extends Activity implements CompoundButton.OnC
         menu_reply.setOnCheckedChangeListener(this);
         menu_share.setOnCheckedChangeListener(this);
         menu_more.setOnCheckedChangeListener(this);
-
 
 
         new AsyncTask<String, Void, Post>() {
@@ -144,30 +144,36 @@ public class DetailedPostActivity extends Activity implements CompoundButton.OnC
             @Override
             protected void onPostExecute(final Post post) {
                 super.onPostExecute(post);
-                socialization = ShareSDK.getService(Socialization.class);
+
                 //load date with customer stylesheet in assets
 
                 String htmlData = "<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" /> <body class= \"gloable\"> " + post.getContent() + "</body>";
                 WebSettings settings = content_webview.getSettings();
-                settings.setTextZoom(getSharedPreferences("textsize",0).getInt("size",100));
+                settings.setTextZoom(getSharedPreferences("textsize", 0).getInt("size", 100));
                 content_webview.loadDataWithBaseURL("file:///android_asset/", htmlData, MIME_TYPE, ENCODING, null);
-
-                new AsyncTask<String ,Void, HashMap<String,Integer>>(){
-                    @Override
-                    protected HashMap<String, Integer> doInBackground(String... strings) {
-                        return socialization.getTopicOutline(strings[0])==null?new HashMap<String, Integer>():socialization.getTopicOutline(strings[0]);
-                    }
-
-                    @Override
-                    protected void onPostExecute(HashMap<String, Integer> stringObjectsHashMap) {
-                        super.onPostExecute(stringObjectsHashMap);
-                        likecount = stringObjectsHashMap.get("likecount").intValue();
-                        menu_like.setText(String.valueOf(stringObjectsHashMap.get("likecount")));
-                        menu_reply.setText(String.valueOf(stringObjectsHashMap.get("comtcount")));
-                        //menu_share.setText(String.valueOf(stringObjectsHashMap.get("sharecount")));
-                    }
-                }.execute(id);
             }
+
+        }.execute(id);
+        new AsyncTask<String, Void, HashMap<String, Integer>>() {
+            @Override
+            protected HashMap<String, Integer> doInBackground(String... strings) {
+                socialization = ShareSDK.getService(Socialization.class);
+                return socialization.getTopicOutline(strings[0]);
+            }
+
+            @Override
+            protected void onPostExecute(HashMap<String, Integer> stringObjectsHashMap) {
+                super.onPostExecute(stringObjectsHashMap);
+                likecount = stringObjectsHashMap.get("likecount").intValue();
+                menu_like.setText(String.valueOf(stringObjectsHashMap.get("likecount")));
+                if (stringObjectsHashMap.get("likecount") != 0){
+                    menu_reply.setText(String.valueOf(stringObjectsHashMap.get("comtcount")));
+                }
+                if (stringObjectsHashMap.get("sharecount") != 0){
+                    menu_share.setText(String.valueOf(stringObjectsHashMap.get("sharecount")));
+                }
+            }
+
 
         }.execute(id);
 
@@ -205,26 +211,30 @@ public class DetailedPostActivity extends Activity implements CompoundButton.OnC
                             System.out.println("赞了一次！");
                         }
                     }).start();
-                    Toast.makeText(this,"点赞是一种态度",Toast.LENGTH_SHORT).show();
-                    menu_like.setText(String.valueOf( likecount + 1));
+                    Toast.makeText(this, "点赞是一种态度", Toast.LENGTH_SHORT).show();
+                    menu_like.setText(String.valueOf(likecount + 1));
                 } else {
                     menu_like.setClickable(false);
                     menu_like.setButtonDrawable(R.drawable.ssdk_social_toolbar_like);
-                    Toast.makeText(this,"你已经赞过了",Toast.LENGTH_SHORT).show();
-                }break;
+                    Toast.makeText(this, "你已经赞过了", Toast.LENGTH_SHORT).show();
+                }
+                break;
             case R.id.activity_detailed_button_reply:
-                if (b){
+                if (b) {
                     CommentListPage page = new CommentListPage();
-                    page.setTopic(id, title,date, author);
+                    page.setTopic(id, title, date, author);
                     page.setOnekeyShare(oks);
                     page.show(DetailedPostActivity.this, null);
                 } else {
 
-                }break;
+                }
+                break;
             case R.id.activity_detailed_button_share:
-                if (b){
+                if (b) {
                     createOKS();
-                } else {}break;
+                } else {
+                }
+                break;
             case R.id.activity_detailed_button_more:
 //                PopupWindow popupWindow;
 //                View menuView =getLayoutInflater().inflate(R.layout.activity_detailed_post_settings, null);
@@ -237,7 +247,8 @@ public class DetailedPostActivity extends Activity implements CompoundButton.OnC
                 } else {
                     layout.setVisibility(View.GONE);
 
-                }break;
+                }
+                break;
         }
     }
 
@@ -248,7 +259,7 @@ public class DetailedPostActivity extends Activity implements CompoundButton.OnC
         oks.setTitle(title);
         oks.setTitleUrl(url);
         //设置分享的简介
-        oks.setText("我在重邮飞讯上看到一个不错的文章:《" +title + "》,点击查看:" + url );
+        oks.setText("我在重邮飞讯上看到一个不错的文章:《" + title + "》,点击查看:" + url);
         //设置分享的图片外链，供微信调用
         oks.setImageUrl(thumb_image);
         System.out.println("thumb_image = " + thumb_image);
