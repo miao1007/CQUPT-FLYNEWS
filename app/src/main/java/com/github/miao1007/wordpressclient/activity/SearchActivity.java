@@ -25,7 +25,6 @@ public class SearchActivity extends Activity {
             public void onClick(View view) {
                 String query = editText_query.getText().toString();
                 if ( !query.isEmpty()){
-                    //todo
                     setResult(query);
                     finish();
                 } else {

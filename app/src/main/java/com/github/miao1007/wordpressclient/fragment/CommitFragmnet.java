@@ -11,7 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.miao1007.wordpressclient.R;
-import com.github.miao1007.wordpressclient.model.comment.CommentResult;
+import com.github.miao1007.wordpressclient.info.comment.CommentResult;
+import com.github.miao1007.wordpressclient.model.Model;
 import com.github.miao1007.wordpressclient.utils.WordPressUtils;
 
 /**
@@ -19,21 +20,21 @@ import com.github.miao1007.wordpressclient.utils.WordPressUtils;
  */
 public class CommitFragmnet extends Fragment {
 
-    final static String commitPageID = "980";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getActivity().getActionBar().setTitle(R.string.commit_message);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         //http://leondemac.jd-app.com/api/submit_comment/?post_id=177&name=123&email=6621@qq.com&content=qawedsad
         View view = inflater.inflate(R.layout.frag_commit, null);
-        TextView content_textview = (TextView)view.findViewById(R.id.frag_commit_textview_content);
-        final EditText editText_name = (EditText)view.findViewById(R.id.frag_commit_editText_name);
-        final EditText editText_email = (EditText)view.findViewById(R.id.frag_commit_editText_content);
-        final EditText editText_content = (EditText)view.findViewById(R.id.frag_commit_editText_content);
+        TextView content_textview = (TextView) view.findViewById(R.id.frag_commit_textview_content);
+        final EditText editText_name = (EditText) view.findViewById(R.id.frag_commit_editText_name);
+        final EditText editText_email = (EditText) view.findViewById(R.id.frag_commit_editText_email);
+        final EditText editText_content = (EditText) view.findViewById(R.id.frag_commit_editText_content);
         view.findViewById(R.id.frag_commit_commit).setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -45,28 +46,31 @@ public class CommitFragmnet extends Fragment {
                     Toast.makeText(getActivity(), "请正确填写", Toast.LENGTH_SHORT).show();
                 } else {
 
-                    new AsyncTask<String, Void, CommentResult>() {
-                        @Override
-                        protected CommentResult doInBackground(String... strings) {
-                            return WordPressUtils.commitComment(commitPageID ,strings[0], strings[1],strings[2]);
-                        }
-
-                        @Override
-                        protected void onPostExecute(CommentResult commentResult) {
-                            super.onPostExecute(commentResult);
-                            if (commentResult.getStatus().equals("pending")){
-                                Toast.makeText(getActivity(),"成功提交！", Toast.LENGTH_SHORT).show();
-                            } else if (commentResult.getStatus().equals("error")){
-                                Toast.makeText(getActivity(),commentResult.getError(), Toast.LENGTH_SHORT).show();
-                            } else if (commentResult.getStatus().equals("ok")){
-                                Toast.makeText(getActivity(),"成功提交！", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    }.execute(name, email, content);
+                    uploadDate(name, email, content);
                 }
             }
         });
         return view;
     }
 
+    void uploadDate(String name, String email, String content) {
+        new AsyncTask<String, Void, CommentResult>() {
+            @Override
+            protected CommentResult doInBackground(String... strings) {
+                return WordPressUtils.commitComment(Model.FEED_COMMIT_POST_ID, strings[0], strings[1], strings[2]);
+            }
+
+            @Override
+            protected void onPostExecute(CommentResult commentResult) {
+                super.onPostExecute(commentResult);
+                if (commentResult.getStatus().equals("pending")) {
+                    Toast.makeText(getActivity(), "我们将及时回应！", Toast.LENGTH_SHORT).show();
+                } else if (commentResult.getStatus().equals("error")) {
+                    Toast.makeText(getActivity(), commentResult.getError(), Toast.LENGTH_SHORT).show();
+                } else if (commentResult.getStatus().equals("ok")) {
+                    Toast.makeText(getActivity(), "成功提交！", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }.execute(name, email, content);
+    }
 }

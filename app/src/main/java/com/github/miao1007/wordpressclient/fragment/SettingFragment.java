@@ -49,6 +49,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        getActivity().getActionBar().setTitle(getString(R.string.action_settings));
     }
 
     @Override
@@ -85,7 +86,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
                 //create a dialog
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("提示")
-                        .setMessage("确定清除授权信息吗")
+                        .setMessage("确定清楚缓存吗")
                         .setPositiveButton("确认",new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
@@ -93,7 +94,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
                                 CleanUtils.cleanExternalCache(getActivity());
                                 CleanUtils.cleanDatabases(getActivity());
                                 CleanUtils.cleanSharedPreference(getActivity());
-                                getActivity().finish();
+                                Toast.makeText(getActivity(), "清理完成" ,Toast.LENGTH_SHORT).show();
                             }
                         }).setNegativeButton("取消",new DialogInterface.OnClickListener() {
                     @Override

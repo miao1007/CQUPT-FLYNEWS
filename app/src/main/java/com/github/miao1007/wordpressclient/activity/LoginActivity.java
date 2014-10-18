@@ -127,6 +127,7 @@ public class LoginActivity extends Activity implements Handler.Callback,
     public void onComplete(Platform plat, int action, HashMap<String, Object> stringObjectHashMap) {
         String name;
         String avatar;
+        UIHandler.sendEmptyMessage(MSG_USERID_FOUND,this);
         if (plat instanceof SinaWeibo){
             name = String.valueOf(stringObjectHashMap.get("name"));
             avatar = String.valueOf(stringObjectHashMap.get("avatar_large"));

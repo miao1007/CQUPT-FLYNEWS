@@ -2,100 +2,106 @@
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    >
+    android:layout_height="wrap_content">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/home_list_shadow_bg"
-        android:orientation="vertical"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp">
+        android:layout_marginRight="8dp"
+        android:background="@drawable/home_list_shadow_bg"
+        android:orientation="vertical">
 
-        <RelativeLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="wrap_content"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
 
             <ImageView
                 android:id="@+id/listview_news_imageview_thumb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
                 android:layout_weight="3"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/android_load_loading"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:src="@drawable/android_load_loading" />
 
             <TextView
                 android:id="@+id/listview_news_textview_title"
-                android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:textColor="#ffffff"
-                android:background="@drawable/home_list_background"
-                android:singleLine="true"
-                android:ellipsize="marquee"
-                android:text="我国将首发自制知识产权的操作系统"
-                android:gravity="center_horizontal|left"
-                android:paddingLeft="8dp"
-                android:paddingRight="25dp"
-                android:paddingBottom="8dp"
-                android:paddingTop="6dp"
                 android:layout_alignBottom="@+id/listview_news_imageview_thumb"
-                android:layout_alignRight="@+id/listview_news_imageview_thumb"
                 android:layout_alignEnd="@+id/listview_news_imageview_thumb"
                 android:layout_alignLeft="@+id/listview_news_imageview_thumb"
+                android:layout_alignRight="@+id/listview_news_imageview_thumb"
                 android:layout_alignStart="@+id/listview_news_imageview_thumb"
+                android:layout_weight="1"
+                android:background="@drawable/home_list_background"
+                android:ellipsize="marquee"
+                android:gravity="center_horizontal|left"
+                android:paddingBottom="8dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="25dp"
+                android:paddingTop="6dp"
+                android:shadowColor="#000000"
+                android:shadowRadius="1"
+                android:singleLine="true"
+                android:text="我国将首发自制知识产权的操作系统"
+                android:textColor="#ffffff"
+                android:textSize="24sp"
                 android:textStyle="bold" />
+
             <TextView
+                android:id="@+id/listview_news_textview_category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="分类：未分类"
-                android:id="@+id/listview_news_textview_category"
-                android:textSize="14sp"
-                android:background="@color/android_l_200"
                 android:layout_margin="8dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:paddingTop="4dp" />
+                android:background="@drawable/shape_bg"
+                android:paddingBottom="4dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="4dp"
+                android:text="分类：未分类"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
         </RelativeLayout>
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2小时前"
-                android:layout_marginLeft="8dp"
                 android:id="@+id/listview_news_textview_date"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:paddingTop="8dp"
-                android:password="false" />
-
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="又一家中国公司要赴美上市，虽然这家名“芯原”IC设计公司大家不熟悉，但他是给谷歌等互联网公司定制芯片的，也给很多中国公司定制芯片"
-                android:id="@+id/listview_news_textview_excerpt"
-                android:textStyle="bold"
                 android:layout_marginLeft="8dp"
-                android:paddingTop="6dp"
-                android:maxLines="4"
+                android:paddingTop="8dp"
+                android:password="false"
+                android:text="2小时前"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/listview_news_textview_excerpt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:shadowRadius="1"
+                android:shadowColor="#50111111"
                 android:maxLength="139"
-                android:textSize="14sp" />
+                android:maxLines="4"
+                android:paddingTop="6dp"
+                android:text="又一家中国公司要赴美上市，虽然这家名“芯原”IC设计公司大家不熟悉，但他是给谷歌等互联网公司定制芯片的，也给很多中国公司定制芯片"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
 
         </LinearLayout>
@@ -103,5 +109,5 @@
     </LinearLayout>
 
 
-    </FrameLayout>
+</FrameLayout>
 

@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.github.miao1007.wordpressclient.R;
-import com.github.miao1007.wordpressclient.model.post.Post;
+import com.github.miao1007.wordpressclient.info.post.Post;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

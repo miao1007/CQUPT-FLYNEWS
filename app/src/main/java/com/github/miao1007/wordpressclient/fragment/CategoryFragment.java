@@ -3,7 +3,8 @@ package com.github.miao1007.wordpressclient.fragment;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.github.miao1007.wordpressclient.model.post.Post;
+import com.github.miao1007.wordpressclient.info.post.Post;
+import com.github.miao1007.wordpressclient.model.Model;
 import com.github.miao1007.wordpressclient.utils.WordPressUtils;
 
 import java.util.List;
@@ -15,27 +16,28 @@ import java.util.List;
 public class CategoryFragment extends BaseFragment {
 
     @Override
-    protected List<Post> loadPage(Bundle bundle ,int currentPage) {
+    protected List<Post> loadDate(Bundle bundle, int currentPage) {
 
         if (bundle != null){
-            if (bundle.containsKey("category")){
-                Log.i("CategoryFragment found for",bundle.getString("category"));
-                handler.sendMessage(handler.obtainMessage(1,bundle.getString("category")));
-                return WordPressUtils.getPostsByCategory(bundle.getString("category"),String.valueOf(currentPage)).getPosts();
-            } else if (bundle.containsKey("query")){
-                Log.w("Search for ",bundle.getString("query"));
-                handler.sendMessage(handler.obtainMessage(1,"对 \"" + bundle.getString("query") + "\" 的搜索结果"));
-                return WordPressUtils.getPostsBySearch(bundle.getString("query"),String.valueOf(currentPage)).getPosts();
+            if (bundle.containsKey(Model.FRAGMENT_CATEGORY)){
+                Log.i("CategoryFragment found for",bundle.getString(Model.FRAGMENT_CATEGORY));
+                setTitle(bundle.getString(Model.FRAGMENT_CATEGORY));
+                return WordPressUtils.getPostsByCategory(bundle.getString(Model.FRAGMENT_CATEGORY),String.valueOf(currentPage)).getPosts();
+            } else if (bundle.containsKey(Model.FRAGMENT_SEARCH)){
+                Log.i("Search for ",bundle.getString(Model.FRAGMENT_SEARCH));
+                setTitle("对 \"" + bundle.getString(Model.FRAGMENT_SEARCH) + "\" 的搜索结果");
+                return WordPressUtils.getPostsBySearch(bundle.getString(Model.FRAGMENT_SEARCH),String.valueOf(currentPage)).getPosts();
             } else {
-                Log.w("nofound for category search",bundle.toString());
-                handler.sendMessage(handler.obtainMessage(1,"主页"));
+                Log.w("No found args for category or search",bundle.toString());
+                setTitle("主页");
                 return WordPressUtils.getPostsByPage(String.valueOf(currentPage)).getPosts();
             }
         } else {
             Log.w("bundle is null , try to use default",String.valueOf(currentPage));
-            handler.sendMessage(handler.obtainMessage(1,"主页"));
+            setTitle("主页");
             return WordPressUtils.getPostsByPage(String.valueOf(currentPage)).getPosts();
         }
-
     }
+
+
 }

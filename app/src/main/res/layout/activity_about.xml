@@ -38,7 +38,7 @@
                     android:layout_marginRight="32dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
-                    android:text="重邮飞讯是一款基于重邮最新资讯的社会化阅读软件，该软件支持使用新浪微博等第三方账号参与评论，分享文章，投稿新闻，同时它是开源的，你甚至可以参与开发"
+                    android:text="@string/about_us"
                     android:textColor="#ff333333"
                     android:textSize="16.0dip" />
             </LinearLayout>
@@ -67,7 +67,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_height="wrap_content"
                     android:autoLink="web"
-                    android:text="http://www.github.com/miao1007"
+                    android:text="@string/project_address"
                     android:textColor="#ff333333"
                     android:textSize="16.0dip" />
 

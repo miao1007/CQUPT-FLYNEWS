@@ -24,7 +24,7 @@
             android:layout_below="@+id/slidingmenu_header_avatar"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
-            android:text="未登录"
+            android:text="@string/user_login"
             android:textColor="#ffffff" />
 
         <ImageView

@@ -13,6 +13,7 @@
 
     <!--android design style cqupt logo green -->
     <!--I will use 100 500 700-->
+    <color name="android_l_0">#ffffff</color>
     <color name="android_l_50">#d0f8ce</color>
     <color name="android_l_100">#a3e9a4</color>
     <color name="android_l_200">#72d572</color>
@@ -21,5 +22,7 @@
     <color name="android_l_500">#259b24</color>
     <color name="android_l_700">#0a7e07</color>
 
+    <!--black background with alpha-->
+    <color name="black_bg_alpha">#82000000</color>
 
 </resources>

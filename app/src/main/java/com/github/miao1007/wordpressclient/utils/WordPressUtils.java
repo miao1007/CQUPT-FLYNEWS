@@ -7,10 +7,11 @@
 package com.github.miao1007.wordpressclient.utils;
 
 
-import com.github.miao1007.wordpressclient.model.api.CategoriesWithStatus;
-import com.github.miao1007.wordpressclient.model.api.PostsWithStatus;
-import com.github.miao1007.wordpressclient.model.api.SinglePostWithStatus;
-import com.github.miao1007.wordpressclient.model.comment.CommentResult;
+import com.github.miao1007.wordpressclient.info.api.CategoriesWithStatus;
+import com.github.miao1007.wordpressclient.info.api.PostsWithStatus;
+import com.github.miao1007.wordpressclient.info.api.SinglePostWithStatus;
+import com.github.miao1007.wordpressclient.info.comment.CommentResult;
+import com.github.miao1007.wordpressclient.model.Model;
 
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
@@ -24,7 +25,6 @@ public class WordPressUtils {
 
     //WP JSON API DOC : http://wordpress.org/plugins/json-api/other_notes/
 
-    final static String END_POINT = "http://leondemac.jd-app.com/api";
 
     interface WordPressAPIService {
 
@@ -49,8 +49,8 @@ public class WordPressUtils {
     }
 
     final static RestAdapter adapter = new RestAdapter.Builder()
-            .setEndpoint(END_POINT)
-            .setLogLevel(RestAdapter.LogLevel.FULL)
+            .setEndpoint(Model.END_POINT)
+            //.setLogLevel(RestAdapter.LogLevel.FULL)
             .build();
     final static WordPressAPIService service = adapter.create(WordPressAPIService.class);
 
@@ -94,7 +94,7 @@ public class WordPressUtils {
         PostsWithStatus postsWithStatus = new PostsWithStatus();
         try {
             postsWithStatus = service.getPostsByCategory(category_slug, currentPage);
-            System.out.println("getPostsByCategory count" + postsWithStatus.getCount());
+            System.out.println("getPostsByCategory/" + category_slug + "/count=" + postsWithStatus.getCount() + "/page=" + currentPage);
             return postsWithStatus;
         } catch (RetrofitError e) {
             e.printStackTrace();
@@ -122,5 +122,4 @@ public class WordPressUtils {
             return CommentResult.getRepeatCommentResult();
         }
     }
-
 }

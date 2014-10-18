@@ -95,6 +95,7 @@
     <orderEntry type="library" exported="" name="ShareSDK-Wechat-Moments-2.4.0" level="project" />
     <orderEntry type="library" exported="" name="okhttp-2.0.0" level="project" />
     <orderEntry type="library" exported="" name="ShareSDK-Core-2.4.0" level="project" />
+    <orderEntry type="module" module-name="pullToRefresh" exported="" />
   </component>
 </module>
 
