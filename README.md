@@ -30,4 +30,4 @@ Use the latest Android Studio import the project.
 
 Developed By
 -------------
-Leon -- miao1007@gmail.com
+Leon - miao1007@gmail.com
