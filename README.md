@@ -7,7 +7,7 @@ What is it?
 -------------
 * For Android users:It is an APP designed for getting latest school news in Android Platform , administrator writes articles on Wordpress and the users will snyc the date from server, and users can commnet and share the article on Weibo or QZone .etc.
 
-* For Disktop users , they can get the news with a platform-independent (WebPage)[http://leondemac.jd-app.com/]
+* For Disktop users , they can get the news with a platform-independent [WebPage](http://leondemac.jd-app.com/)
 
 * For iPhone or Windows Phone users , the WebSite is still capable of providng the best view of the news.
 
