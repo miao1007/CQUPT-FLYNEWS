@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content">
+<view xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/view"
+    class="android.support.v7.widget.CardView"
+    android:layout_width="wrap_content"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginTop="2dp"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="3dp">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:background="@drawable/home_list_shadow_bg"
-        android:orientation="vertical">
+
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="wrap_content"
@@ -29,7 +30,8 @@
                 android:layout_weight="3"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/android_load_loading" />
+                android:src="@drawable/android_load_loading"
+                android:paddingBottom="4dp" />
 
             <TextView
                 android:id="@+id/listview_news_textview_title"
@@ -71,43 +73,35 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-        </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
             <TextView
                 android:id="@+id/listview_news_textview_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:paddingTop="8dp"
                 android:password="false"
                 android:text="2小时前"
                 android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_below="@+id/listview_news_imageview_thumb"
+                android:paddingBottom="4dp"
+                android:paddingTop="4dp" />
 
             <TextView
                 android:id="@+id/listview_news_textview_excerpt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:shadowRadius="1"
-                android:shadowColor="#50111111"
                 android:maxLength="139"
                 android:maxLines="4"
-                android:paddingTop="6dp"
+                android:shadowColor="#50111111"
+                android:shadowRadius="1"
                 android:text="又一家中国公司要赴美上市，虽然这家名“芯原”IC设计公司大家不熟悉，但他是给谷歌等互联网公司定制芯片的，也给很多中国公司定制芯片"
                 android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_below="@+id/listview_news_textview_date"
+                android:paddingBottom="8dp" />
+
+        </RelativeLayout>
 
 
-        </LinearLayout>
-
-    </LinearLayout>
-
-
-</FrameLayout>
-
+</view>

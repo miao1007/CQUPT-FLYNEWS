@@ -56,7 +56,7 @@ public class PostAdapter extends BaseAdapter {
         final ViewHolder holder;
         if (view == null) {
             holder = new ViewHolder();
-            view = LayoutInflater.from(context).inflate(R.layout.adapter_news, null);
+            view = LayoutInflater.from(context).inflate(R.layout.adapter_card, null);
             holder.image_thumb = (ImageView)view.findViewById(R.id.listview_news_imageview_thumb);
             holder.content_category = (TextView)view.findViewById(R.id.listview_news_textview_category);
             holder.content_excerpt = (TextView)view.findViewById(R.id.listview_news_textview_excerpt);

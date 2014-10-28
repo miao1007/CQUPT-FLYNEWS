@@ -48,7 +48,7 @@ public abstract class BaseFragment extends Fragment implements AdapterView.OnIte
             @Override
             public void handleMessage(Message msg) {
                 if (msg.what == REFRESH_TITLE && msg.obj != null && msg.obj instanceof String) {
-                    getActivity().getActionBar().setTitle((String) msg.obj);
+
                 }
             }
         };

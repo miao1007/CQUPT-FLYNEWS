@@ -1,7 +1,7 @@
 CQUPT-FLYNEWS
 =============
 
-A Project of getting School news from WordPress-Based Server.
+A Project of getting School news from WordPress-Based RESTful Server.
 
 What is it?
 -------------
@@ -14,8 +14,7 @@ What is it?
 Technology Used
 -------------
 
-  
-      //JSON , IMAGE Handler
+
       compile 'com.squareup.retrofit:retrofit:1.6.1'
       compile 'com.squareup.okhttp:okhttp-urlconnection:2.0.0'
       compile 'com.squareup.okhttp:okhttp:2.0.0'

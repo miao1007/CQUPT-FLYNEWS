@@ -11,12 +11,9 @@
         <item name="mdContentBackground">@color/SettingsFragment.Child.Normal</item>
         <item name="mdDropShadowEnabled">false</item>
 
-        <item name="android:actionBarStyle">@style/CustomerActionBarStyle</item>
         <item name="mdMenuSize">@dimen/slidingmenu_default</item>
         <item name="mdDrawerOpenUpContentDescription">@string/md__drawerOpenIndicatorDesc</item>
         <item name="mdDrawerClosedUpContentDescription">@string/md__drawerClosedIndicatorDesc</item>
-
-
     </style>
 
 
