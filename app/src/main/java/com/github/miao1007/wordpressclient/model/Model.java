@@ -6,7 +6,8 @@ package com.github.miao1007.wordpressclient.model;
  */
 public class Model {
     //WordpressUtils Website endpoint
-    public final static String END_POINT = "http://leondemac.jd-app.com/api";
+    public final static String END_ADDR = "http://162.243.252.57";
+    public final static String END_POINT = "http://162.243.252.57/api";
     public final static String FEED_COMMIT_POST_ID = "980";
 
     //bundle Key-Value Pairs

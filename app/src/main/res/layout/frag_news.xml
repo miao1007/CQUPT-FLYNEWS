@@ -1,8 +1,14 @@
 <view xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main_listview"
-    class="com.handmark.pulltorefresh.library.PullToRefreshListView"
+    android:id="@+id/swipeRefreshLayout"
+    class="android.support.v4.widget.SwipeRefreshLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/android_l_0"
-    android:divider="@color/android_l_0"
-    android:dividerHeight="8dp" />
+    android:layout_height="match_parent">
+
+    <view xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/recylerView"
+        class="android.support.v7.widget.RecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/android_l_200"></view>
+
+</view>

@@ -8,7 +8,7 @@
         style="@style/SlidingMenuItem">
 
         <ImageView
-            android:id="@+id/imageView1"
+            android:id="@+id/category_image_tag"
             style="@style/SlidingMenuItem_Image"
             android:src="@drawable/ic_menu_commit" />
 

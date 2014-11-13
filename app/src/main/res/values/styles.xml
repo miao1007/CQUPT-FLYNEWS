@@ -70,13 +70,9 @@
 
     <!--sliding menu choices-->
     <style name="SlidingMenuItem">
-        <item name="android:background">@drawable/slidingmenu_bg_selector</item>
         <item name="android:layout_height">48dp</item>
         <item name="android:layout_width">fill_parent</item>
         <item name="android:orientation">horizontal</item>
-    </style>
-    <style name="SlidingMenuItem.White" parent="SlidingMenuItem">
-        <item name="android:background">@drawable/slidingmenu_bg_selector_white</item>
     </style>
      <style name="SlidingMenuItem_Image">
         <item name="android:layout_marginLeft">16dp</item>
@@ -86,12 +82,17 @@
         <item name="android:layout_width">16dp</item>
     </style>
     <style name="SlidingMenuItem_TextView">
+        <item name="android:textColor">@color/secondary_text_default_material_light</item>
+        <item name="android:textSize">@dimen/abc_text_size_body_2_material</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_gravity">center_vertical</item>
-        <item name="android:textSize">16sp</item>
         <item name="android:layout_marginLeft">16dp</item>
     </style>
 
+    <!--card padding-->
+    <style name="CardView.Text">
+        <item name="android:textColor">@color/accent_material_light</item>
+    </style>
 
 </resources>

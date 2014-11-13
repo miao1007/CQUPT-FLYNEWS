@@ -1,15 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <!--listview-->
+    <!-- listview -->
     <dimen name="round_corner_bg_item_padding">10.0dip</dimen>
     <dimen name="round_corner_layout_item_padding">8.0dip</dimen>
     <dimen name="round_corner_item_min_height">50.0dip</dimen>
     <dimen name="reader_and_update_item_padding">6.5dip</dimen>
     <dimen name="round_corner_item_height">51.299988dip</dimen>
 
-    <!--sliding menu-->
+    <!-- sliding menu -->
     <dimen name="slidingmenu_default">260dp</dimen>
+    <dimen name="navigation_drawer_width">240dp</dimen>
+
 </resources>

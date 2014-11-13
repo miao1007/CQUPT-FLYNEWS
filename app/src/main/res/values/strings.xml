@@ -4,14 +4,30 @@
     <string name="title_activity_detailed_post">详细信息</string>
     <string name="app_name">校园飞鸽</string>
     <string name="networkerr">请检查网络连接！</string>
-    <string name="post_isempty">找不到更多啦！</string>
+    <string name="post_isempty">文章到底啦！</string>
     <string name="user_login">请登陆</string>
+    <string name="user_already_login">你已经登陆了</string>
     <string name="defaultavatar_link">http://www.iteye.com/images/user-logo-thumb.gif?1324994303</string>
     <string name="about_us">校园飞鸽是一款基于重邮最新资讯的社会化阅读软件，该软件支持使用新浪微博等第三方账号参与评论，分享文章，投稿新闻，同时它是开源的，你甚至可以参与开发</string>
     <string name="project_address">https://github.com/miao1007/CQUPT-FLYNEWS</string>
     <string name="empty_text">轻触屏幕重新加载</string>
     <string name="commit_message">提交</string>
+    <string name="no_fill">请完整填写</string>
 
+    <!-- navigationbar -->
+    <string name="open">close</string>
+    <string name="close">close</string>
+
+    <!-- Retrofit Error -->
+    <string name="NETWORK">无法访问服务器地址，请检查你的网络！ : </string>
+    <string name="CONVERSION">解析数据失败</string>
+    <string name="HTTP">服务器内部出错啦 : </string>
+    <string name="HTTP_500">检测到重复评论，您似乎已经提交过这条评论了！ </string>
+    <string name="HTTP_404">界面未找到, 请尝试登陆网页版! </string>
+    <string name="UNEXPECTED">未知错误, 请邮件联系作者！:</string>
+
+    <!-- card_adapter -->
+    <string name="no_categoty">作者很懒，没有分类</string>
 
     <!-- 一键分享 -->
     <string name="cancel">取消</string>
@@ -146,5 +162,14 @@
     <string name="action_settings">设置</string>
     <string name="title_activity_feedback">反馈意见</string>
     <string name="title_activity_search">搜索</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">Example action</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_base">BaseActivity</string>
 
 </resources>

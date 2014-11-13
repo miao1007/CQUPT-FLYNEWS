@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        style="@style/SlidingMenuItem.White"
+        style="@style/SlidingMenuItem"
         android:layout_height="56dp">
 
 

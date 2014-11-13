@@ -4,8 +4,8 @@
     android:layout_width="@dimen/slidingmenu_default"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        style="@style/SlidingMenuItem.White">
+    <LinearLayout style="@style/SlidingMenuItem"
+        android:layout_marginTop="8dp">
 
         <ImageView
             style="@style/SlidingMenuItem_Image"

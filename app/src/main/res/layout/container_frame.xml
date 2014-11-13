@@ -1,25 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<view xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawerLayout"
+    class="android.support.v4.widget.DrawerLayout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <!--content-->
+    <FrameLayout
         android:id="@+id/container_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
     </FrameLayout>
 
+    <!--sliding menu -->
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/container_menu"
-        android:layout_width="match_parent"
+        android:layout_width="320dp"
+
         android:layout_height="match_parent">
 
     </FrameLayout>
 
 
-
-</LinearLayout>
-
+</view>

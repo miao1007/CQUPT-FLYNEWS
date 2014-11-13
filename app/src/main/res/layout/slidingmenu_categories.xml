@@ -2,18 +2,19 @@
     android:layout_width="@dimen/slidingmenu_default"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        style="@style/SlidingMenuItem">
-
-        <ImageView
-            android:id="@+id/imageView1"
-            style="@style/SlidingMenuItem_Image"
-            android:src="@drawable/ic_menu_cornor_categories" />
+    <LinearLayout style="@style/SlidingMenuItem">
 
         <TextView
             android:id="@+id/slidingmenu_categories_tpye"
             style="@style/SlidingMenuItem_TextView"
-            android:text="投稿"/>
+            android:text="投稿" />
+
+        <ImageView
+            android:id="@+id/category_image_tag"
+            style="@style/SlidingMenuItem_Image"
+            android:src="@drawable/ic_menu_cornor_categories" />
+
+
     </LinearLayout>
 
 </LinearLayout>

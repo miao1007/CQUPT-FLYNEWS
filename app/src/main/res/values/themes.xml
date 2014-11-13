@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
-        <item name="android:actionBarStyle">@style/CustomerActionBarStyle</item>
-    </style>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat">
+        <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
 
-    <!--sliding menu theme -->
-    <style name="MenuDrawerStyle" parent="AppTheme">
-
-        <item name="mdMenuBackground">@color/md__customerBackground</item>
-        <item name="mdContentBackground">@color/SettingsFragment.Child.Normal</item>
-        <item name="mdDropShadowEnabled">false</item>
-
-        <item name="mdMenuSize">@dimen/slidingmenu_default</item>
-        <item name="mdDrawerOpenUpContentDescription">@string/md__drawerOpenIndicatorDesc</item>
-        <item name="mdDrawerClosedUpContentDescription">@string/md__drawerClosedIndicatorDesc</item>
+        <!-- Actionbar color -->
+        <item name="colorPrimary">@color/accent_material_dark</item>
+        <!--Status bar color-->
+        <item name="colorPrimaryDark">@color/accent_material_light</item>
+        <!--Window color-->
+        <item name="android:windowBackground">@color/dim_foreground_material_dark</item>
     </style>
 
 
