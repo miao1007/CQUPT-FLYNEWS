@@ -6,6 +6,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +16,7 @@ import android.widget.Toast;
 import com.github.miao1007.wordpressclient.R;
 import com.github.miao1007.wordpressclient.utils.CleanUtils;
 
-public class SettingsActivity extends Activity implements View.OnClickListener {
+public class SettingsActivity extends ActionBarActivity implements View.OnClickListener {
 
     Activity context = SettingsActivity.this;
     SharedPreferences preferences;
@@ -28,6 +30,8 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.frag_setting_clean_cache).setOnClickListener(this);
         findViewById(R.id.frag_setting_feedback).setOnClickListener(this);
         findViewById(R.id.frag_setting_about_us).setOnClickListener(this);
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //TODO: coming soon
         //view.findViewById(R.id.frag_setting_check_update).setOnClickListener(this);
         findViewById(R.id.frag_setting_exit).setOnClickListener(this);
@@ -58,6 +62,7 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
         }
         if (id == android.R.id.home){
             context.finish();
+            overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
         }
 
         return super.onOptionsItemSelected(item);

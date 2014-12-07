@@ -1,49 +1,59 @@
 package com.github.miao1007.wordpressclient.ui.activity;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.github.miao1007.wordpressclient.R;
+import com.github.miao1007.wordpressclient.ui.fragment.FeedFragment;
+import com.github.miao1007.wordpressclient.ui.widget.SendCommentButton;
+import com.github.miao1007.wordpressclient.utils.UIutils;
 
-public class SearchActivity extends Activity {
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
+public class SearchActivity extends ActionBarActivity {
+
+    @InjectView(R.id.toolbar)
+    Toolbar mToolbar;
+
+    @InjectView(R.id.search_edit_text)
     EditText editText_query;
+
+    @InjectView(R.id.search_send_comment_btn)
+    SendCommentButton sendCommentButton;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        //getActionBar().setDisplayHomeAsUpEnabled(true);
-        editText_query = (EditText)findViewById(R.id.frag_search_edittext_content);
-        findViewById(R.id.frag_search_dosearch).setOnClickListener(new View.OnClickListener() {
+        ButterKnife.inject(this);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        sendCommentButton.setOnSendClickListener(new SendCommentButton.OnSendClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onSendClickListener(SendCommentButton v) {
                 String query = editText_query.getText().toString();
                 if ( !query.isEmpty()){
-                    setResult(query);
-                    finish();
+                    getSupportFragmentManager().beginTransaction().replace(
+                            R.id.search_frame,
+                            FeedFragment.newInstance("搜索","",query)
+                    ).commit();
+
+                    v.setCurrentState(SendCommentButton.STATE_DONE);
+
                 } else {
-                    Toast.makeText(SearchActivity.this, "请输入内容", Toast.LENGTH_SHORT).show();
+                    v.startAnimation(AnimationUtils.loadAnimation(SearchActivity.this, R.anim.shake_error));
+                    UIutils.disMsg(SearchActivity.this,"请输入内容");
                 }
             }
         });
 
-
-    }
-
-    //StartActivity For Result Callback
-    private void setResult(String query){
-        //start activity for result
-        Intent mIntent = getIntent();
-        int resultcode = 3;
-        mIntent.putExtra("query", query);
-        // 设置结果，并进行传送
-        SearchActivity.this.setResult(resultcode, mIntent);
     }
 
 
@@ -64,6 +74,7 @@ public class SearchActivity extends Activity {
             return true;
         }else if (id == android.R.id.home){
             finish();
+            overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
         }
         return super.onOptionsItemSelected(item);
     }

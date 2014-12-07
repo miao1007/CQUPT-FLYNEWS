@@ -16,6 +16,11 @@ import retrofit.http.QueryMap;
  */
 public interface WPpostInterface {
 
+    public static String TITLE = "title";
+    public static String PAGE = "page";
+    public static String SEARCH = "s";
+    public static String CATEGORY = "category";
+
 
     @GET("/get_posts")
     void getPostsByPage(@QueryMap Map<String,Object> option, Callback<PostsWithStatus> postsWithStatusCallback);

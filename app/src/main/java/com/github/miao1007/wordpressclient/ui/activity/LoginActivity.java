@@ -1,10 +1,11 @@
 package com.github.miao1007.wordpressclient.ui.activity;
 
-import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
@@ -26,7 +27,7 @@ import cn.sharesdk.tencent.qzone.QZone;
  * Created by leon on 14/10/1.
  * Function : 基于ShareSDK的授权回调Activity
  */
-public class LoginActivity extends Activity implements Handler.Callback,
+public class LoginActivity extends ActionBarActivity implements Handler.Callback,
         View.OnClickListener, PlatformActionListener {
 
     private static final int MSG_USERID_FOUND = 1;
@@ -40,7 +41,8 @@ public class LoginActivity extends Activity implements Handler.Callback,
         super.onCreate(savedInstanceState);
         ShareSDK.initSDK(this);
         setContentView(R.layout.fragment_login);
-        //getActionBar().setDisplayHomeAsUpEnabled(true);
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         findViewById(R.id.activity_login_by_qzone).setOnClickListener(this);
         findViewById(R.id.activity_login_by_sinaweibo).setOnClickListener(this);
     }
@@ -49,6 +51,7 @@ public class LoginActivity extends Activity implements Handler.Callback,
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             finish();
+            overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -101,7 +104,7 @@ public class LoginActivity extends Activity implements Handler.Callback,
     private void authorize(Platform plat) {
         if (plat == null) {
             Log.e("authorize", "plat is Empty");
-        } else if (!plat.isValid()){
+        } else if (!plat.isValid()) {
             Log.e("authorize", "trying to log in");
             plat.SSOSetting(true);
             plat.showUser(null);
@@ -113,9 +116,9 @@ public class LoginActivity extends Activity implements Handler.Callback,
             String name = plat.getDb().getUserName();
             if (!TextUtils.isEmpty(userId)) {
                 Log.e("authorize", "You have already logined in");
-                setResult(name,avatar);
+                setResult(name, avatar);
                 UIHandler.sendEmptyMessage(MSG_USERID_FOUND, this);
-            }  else {
+            } else {
                 Log.e("authorize", "userId isEmpty");
             }
         }
@@ -126,12 +129,12 @@ public class LoginActivity extends Activity implements Handler.Callback,
     public void onComplete(Platform plat, int action, HashMap<String, Object> stringObjectHashMap) {
         String name;
         String avatar;
-        UIHandler.sendEmptyMessage(MSG_USERID_FOUND,this);
-        if (plat instanceof SinaWeibo){
+        UIHandler.sendEmptyMessage(MSG_USERID_FOUND, this);
+        if (plat instanceof SinaWeibo) {
             name = String.valueOf(stringObjectHashMap.get("name"));
             avatar = String.valueOf(stringObjectHashMap.get("avatar_large"));
             setResult(name, avatar);
-        } else if (plat instanceof QZone){
+        } else if (plat instanceof QZone) {
             System.out.println("stringObjectHashMap = " + stringObjectHashMap);
             name = String.valueOf(stringObjectHashMap.get("nickname"));
             avatar = String.valueOf(stringObjectHashMap.get("figureurl_qq_2"));
@@ -160,7 +163,7 @@ public class LoginActivity extends Activity implements Handler.Callback,
     }
 
     //StartActivity For Result Callback
-    private void setResult(String name, String avatar){
+    private void setResult(String name, String avatar) {
         Log.e("setResult", name + "+" + avatar);
         //shared performance
         SharedPreferences preferences = LoginActivity.this.getSharedPreferences("sharesdk", 0);
@@ -169,5 +172,7 @@ public class LoginActivity extends Activity implements Handler.Callback,
         editor.putString("avatar", avatar);
         editor.commit();
     }
+
+
 
 }

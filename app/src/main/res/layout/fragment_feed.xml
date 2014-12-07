@@ -1,0 +1,24 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <view
+        android:id="@+id/feed_swiperefreshlayout"
+        class="android.support.v4.widget.SwipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_height="match_parent">
+
+        <view
+            android:id="@+id/feed_recyclerview"
+            style="@style/CardView.Light"
+            class="android.support.v7.widget.RecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </view>
+
+
+</FrameLayout>
+

@@ -92,10 +92,10 @@
     <orderEntry type="library" exported="" name="retrofit-1.7.1" level="project" />
     <orderEntry type="library" exported="" name="okio-1.0.0" level="project" />
     <orderEntry type="library" exported="" name="mframework" level="project" />
-    <orderEntry type="library" exported="" name="play-services-6.1.11" level="project" />
     <orderEntry type="library" exported="" name="ShareSDK-Socialization-1.0.5" level="project" />
     <orderEntry type="library" exported="" name="ShareSDK-Wechat-2.4.0" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-21.0.0" level="project" />
+    <orderEntry type="library" exported="" name="butterknife-6.0.0" level="project" />
     <orderEntry type="library" exported="" name="ShareSDK-SinaWeibo-2.4.0" level="project" />
     <orderEntry type="library" exported="" name="ShareSDK-Wechat-Moments-2.4.0" level="project" />
     <orderEntry type="library" exported="" name="okhttp-2.0.0" level="project" />

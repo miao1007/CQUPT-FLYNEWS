@@ -1,60 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffececec"
     android:orientation="vertical">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/include_toolbar"/>
+
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:id="@+id/llAddComment"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:background="@color/bg_comments"
+        android:gravity="center_vertical"
+        android:paddingBottom="4dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="8dp">
 
+        <EditText
+            android:id="@+id/search_edit_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#555555"
+            android:textSize="14sp" />
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            style="@style/SettingFragment.Layout.Parent">
-
-            <!--反馈意见-->
-
-            <LinearLayout
-                android:id="@+id/linearLayout2"
-                style="@style/SettingFragment.Layout.Child"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/frag_search_edittext_content"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearLayout4"
-            style="@style/SettingFragment.Layout.Parent">
-            <!--退出-->
-
-
-            <TextView
-                style="@style/SettingFragment.Layout.Child"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.0"
-                android:id="@+id/frag_search_dosearch"
-                android:background="#ff2edc09"
-                android:gravity="center"
-                android:text="搜索"
-                android:textColor="#ff333333"
-                android:textSize="16.0dip" />
-
-        </LinearLayout>
-
+        <com.github.miao1007.wordpressclient.ui.widget.SendCommentButton
+            android:id="@+id/search_send_comment_btn"
+            android:layout_width="72dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/btn_send_comment"
+            android:elevation="4dp"
+            android:orientation="vertical" />
 
     </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/search_frame"
+        android:name="com.github.miao1007.wordpressclient.ui.fragment.FeedFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 
 </LinearLayout>
