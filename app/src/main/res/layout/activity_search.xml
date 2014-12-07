@@ -17,8 +17,8 @@
         android:background="@color/bg_comments"
         android:gravity="center_vertical"
         android:paddingBottom="4dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
         android:paddingTop="8dp">
 
         <EditText
