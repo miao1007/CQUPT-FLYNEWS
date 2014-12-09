@@ -31,8 +31,7 @@
         <activity
             android:name="com.github.miao1007.wordpressclient.ui.activity.DetailedPostActivity"
             android:icon="@null"
-            android:label="@string/title_activity_detailed_post"
-            android:theme="@android:style/Theme.Holo.NoActionBar" />
+            android:label="@string/title_activity_detailed_post" />
 
         <!-- share sdk -->
         <activity

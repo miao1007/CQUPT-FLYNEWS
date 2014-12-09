@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--slidingmenu -->
-    <color name="md__transparent">#00000000</color>
-    <color name="md__customerBackground">#ffffff</color>
-    <color name="text_color_menu">#ff868788</color>
->
+
 
     <color name="SettingsFragment.Child.Default">#ffffff</color>
     <color name="SettingsFragment.Child.Normal">#ffe8542f</color>
@@ -25,9 +21,9 @@
     <!--black background with alpha-->
     <color name="black_bg_alpha">#82000000</color>
 
-    <color name="style_color_primary">#2d5d82</color>
-    <color name="style_color_primary_dark">#21425d</color>
-    <color name="style_color_accent">#01bcd5</color>
+    <color name="style_color_primary">@color/meizu_blue_primary</color>
+    <color name="style_color_primary_dark">@color/meizu_blue_dark</color>
+    <color name="style_color_accent">@color/meizu_blue_accent</color>
 
     <color name="fab_color_pressed">#007787</color>
     <color name="fab_color_shadow">#44000000</color>
@@ -39,5 +35,12 @@
     <color name="btn_default_shadow">#99000000</color>
 
     <color name="bg_comments">#ffffff</color>
+
+    <!--meizu_blue-->
+    <color name="meizu_blue_dark">#ff327dcc</color>
+    <color name="meizu_blue_accent">#ff4198eb</color>
+    <color name="meizu_blue_primary">#ff52a9f6</color>
+
+
 
 </resources>

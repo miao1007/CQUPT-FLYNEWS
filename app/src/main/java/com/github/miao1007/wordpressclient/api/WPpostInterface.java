@@ -1,4 +1,4 @@
-package com.github.miao1007.wordpressclient.utils;
+package com.github.miao1007.wordpressclient.api;
 
 import com.github.miao1007.wordpressclient.info.api.PostsWithStatus;
 import com.github.miao1007.wordpressclient.info.api.SinglePostWithStatus;
@@ -19,7 +19,8 @@ public interface WPpostInterface {
     public static String TITLE = "title";
     public static String PAGE = "page";
     public static String SEARCH = "s";
-    public static String CATEGORY = "category";
+    public static String CATEGORY_SLUG = "category_name";
+    public static String CATEGORY_ID = "cat";
 
 
     @GET("/get_posts")
@@ -27,7 +28,7 @@ public interface WPpostInterface {
 
 
     @GET("/get_post")
-    SinglePostWithStatus getPostById(@Query("post_id") String id);
+    void getPostById(@Query("post_id") String id,Callback<SinglePostWithStatus> callback);
 
 
     @GET("/submit_comment")

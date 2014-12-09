@@ -2,5 +2,5 @@
     class="android.support.v7.widget.Toolbar"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="?attr/colorPrimary"
+    android:background="@color/style_color_primary_dark"
     android:theme="@style/Widget.AppCompat.Toolbar" />

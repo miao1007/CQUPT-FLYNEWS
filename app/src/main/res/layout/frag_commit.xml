@@ -97,7 +97,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="12.0dip"
-                    android:text="投稿内容"
+                    android:text="具体内容"
                     android:textColor="#ff333333"
                     android:textSize="16.0dip"
                     android:id="@+id/frag_commit_textview_content" />
@@ -120,10 +120,14 @@
 
         <com.github.miao1007.wordpressclient.ui.widget.SendCommentButton
             android:id="@+id/commit_send_comment_btn"
-            android:layout_width="72dp"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"
             android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
             android:background="@drawable/btn_send_comment"
             android:elevation="4dp"
             android:orientation="vertical" />

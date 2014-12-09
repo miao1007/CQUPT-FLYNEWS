@@ -1,19 +1,19 @@
 package com.github.miao1007.wordpressclient.ui.activity;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
@@ -22,33 +22,62 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.miao1007.wordpressclient.R;
-import com.github.miao1007.wordpressclient.info.post.Post;
+import com.github.miao1007.wordpressclient.api.WPpostInterface;
+import com.github.miao1007.wordpressclient.info.api.SinglePostWithStatus;
 import com.github.miao1007.wordpressclient.model.Model;
 import com.github.miao1007.wordpressclient.utils.NetworkUtils;
-import com.github.miao1007.wordpressclient.utils.WordPressUtils;
+import com.github.miao1007.wordpressclient.utils.UIutils;
 
 import java.util.HashMap;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.onekeyshare.OnekeyShare;
 import cn.sharesdk.socialization.CommentListPage;
 import cn.sharesdk.socialization.Socialization;
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
-public class DetailedPostActivity extends Activity implements CompoundButton.OnCheckedChangeListener {
+import static com.github.miao1007.wordpressclient.utils.LogUtils.LOGD;
+import static com.github.miao1007.wordpressclient.utils.LogUtils.makeLogTag;
+
+public class DetailedPostActivity extends BackableActivity implements CompoundButton.OnCheckedChangeListener {
 
     static final String MIME_TYPE = "text/html";
     static final String ENCODING = "utf-8";
+    String CURRENT_END_POINT_BAK  = Model.END_POINT_BAK;
+    String TAG = makeLogTag(DetailedPostActivity.class);
 
-
+    @InjectView(R.id.content_srollview)
     ScrollView content_srollview;
+
+    @InjectView(R.id.content_webview)
     WebView content_webview;
+
+    @InjectView(R.id.detailed_title)
     TextView content_title;
+
+    @InjectView(R.id.detailed_date)
     TextView content_date;
+
+    @InjectView(R.id.detailed_category)
     TextView content_category;
+//
+//    @OnClick(R.id.button_font_large)
+//    void button_font_large(){
+//        changeFootScan(true);
+//    }
+//
+//    @OnClick(R.id.button_font_small)
+//    void button_font_small(){
+//        changeFootScan(false);
+//    }
 
 
     //Intent Extra
-    private Post post;
     private String id;
     private String title;
     private String date;
@@ -59,10 +88,15 @@ public class DetailedPostActivity extends Activity implements CompoundButton.OnC
     private String thumb_image;
 
     //menu
+    @InjectView(R.id.activity_detailed_button_like)
     CheckBox menu_like;
+    @InjectView(R.id.activity_detailed_button_share)
     CheckBox menu_share;
+    @InjectView(R.id.activity_detailed_button_more)
     CheckBox menu_more;
+    @InjectView(R.id.activity_detailed_button_reply)
     CheckBox menu_reply;
+    @InjectView(R.id.activity_detailed_button_more_layout)
     RelativeLayout layout;
     OnekeyShare oks;
     Socialization socialization;
@@ -76,7 +110,7 @@ public class DetailedPostActivity extends Activity implements CompoundButton.OnC
         oks = new OnekeyShare();
         ShareSDK.registerService(Socialization.class);
         setContentView(R.layout.activity_detailed_post);
-
+        ButterKnife.inject(this);
         id = getIntent().getStringExtra(Model.POST_ID);
         title = getIntent().getStringExtra(Model.POST_TITLE);
         date = getIntent().getStringExtra(Model.POST_DATE);
@@ -89,21 +123,10 @@ public class DetailedPostActivity extends Activity implements CompoundButton.OnC
         } else {
             category = "未分类";
         }
-
-        content_srollview = (ScrollView) findViewById(R.id.content_srollview);
-        content_webview = (WebView) findViewById(R.id.content_webview);
-        content_title = (TextView) findViewById(R.id.activity_detailed_textview_title);
+        content_webview.setWebViewClient(new DefalutHttpClient());
         content_title.setText(title);
-        content_date = (TextView) findViewById(R.id.activity_detailed_textview_date);
         content_date.setText(date);
-        content_category = (TextView) findViewById(R.id.activity_detailed_textview_category);
         content_category.setText(category);
-
-        menu_like = (CheckBox) findViewById(R.id.activity_detailed_button_like);
-        menu_more = (CheckBox) findViewById(R.id.activity_detailed_button_more);
-        menu_share = (CheckBox) findViewById(R.id.activity_detailed_button_share);
-        menu_reply = (CheckBox) findViewById(R.id.activity_detailed_button_reply);
-        layout = (RelativeLayout) findViewById(R.id.activity_detailed_button_more_layout);
 
         menu_like.setOnCheckedChangeListener(this);
         menu_reply.setOnCheckedChangeListener(this);
@@ -125,18 +148,6 @@ public class DetailedPostActivity extends Activity implements CompoundButton.OnC
         // Inflate the menu; this adds items to the action bar if it is present.
         //getActionBar().setDisplayHomeAsUpEnabled(true);
         return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == android.R.id.home) {
-            finish();
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -240,39 +251,36 @@ public class DetailedPostActivity extends Activity implements CompoundButton.OnC
         editor.apply();
     }
 
-    void getContent(String postid){
-        new AsyncTask<String, Void, Post>() {
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-            }
+    void getContent(String postid) {
 
-            @Override
-            protected Post doInBackground(String... strings) {
-                post = WordPressUtils.getPostById(strings[0]).getPost();
-                return post;
-            }
 
-            @Override
-            protected void onPostExecute(final Post post) {
-                super.onPostExecute(post);
+        new RestAdapter.Builder()
+                .setEndpoint(Model.END_POINT_BAK)
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .build().create(WPpostInterface.class)
+                .getPostById(postid, new Callback<SinglePostWithStatus>() {
+                    @Override
+                    public void success(SinglePostWithStatus singlePostWithStatus, Response response) {
+                        String htmlData = "<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" /> <body class= \"gloable\"> " + singlePostWithStatus.getPost().getContent() + "</body>";
+                        WebSettings settings = content_webview.getSettings();
+                        settings.setTextZoom(getSharedPreferences(Model.WEBVIEW_SETTINGS, 0).getInt(Model.WEBVIEW_SETTINGS_SIZE, 100));
+                        content_webview.loadDataWithBaseURL("file:///android_asset/", htmlData, MIME_TYPE, ENCODING, null);
+                        LOGD(TAG,htmlData);
+                    }
 
-                //load date with customer stylesheet in assets
-                if (post == null) {
-                    Toast.makeText(DetailedPostActivity.this, getString(R.string.networkerr), Toast.LENGTH_SHORT).show();
-                } else {
-                    String htmlData = "<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" /> <body class= \"gloable\"> " + post.getContent() + "</body>";
-                    WebSettings settings = content_webview.getSettings();
-                    settings.setTextZoom(getSharedPreferences(Model.WEBVIEW_SETTINGS, 0).getInt(Model.WEBVIEW_SETTINGS_SIZE, 100));
-                    content_webview.loadDataWithBaseURL("file:///android_asset/", htmlData, MIME_TYPE, ENCODING, null);
-                }
+                    @Override
+                    public void failure(RetrofitError error) {
+                        UIutils.disErr(DetailedPostActivity.this, error);
+                        if (error.getKind() == RetrofitError.Kind.HTTP){
+                            CURRENT_END_POINT_BAK = Model.END_POINT;
+                            UIutils.disMsg(DetailedPostActivity.this,"使用备用服务器，请刷新！");
+                        }
+                    }
+                });
 
-            }
-
-        }.execute(postid);
     }
 
-    void getComment(String id){
+    void getComment(String id) {
         new AsyncTask<String, Void, HashMap<String, Integer>>() {
             @Override
             protected HashMap<String, Integer> doInBackground(String... strings) {
@@ -294,5 +302,30 @@ public class DetailedPostActivity extends Activity implements CompoundButton.OnC
             }
 
         }.execute(id);
+    }
+
+    class DefalutHttpClient extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            return true;
+        }
+
+        @Override
+        public void onLoadResource(WebView view, String url) {
+            super.onLoadResource(view, url);
+            LOGD(TAG, "onLoadResource");
+        }
+
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            super.onPageFinished(view, url);
+            LOGD(TAG, "onPageFinished");
+        }
+
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            super.onPageStarted(view, url, favicon);
+            LOGD(TAG, "onPageStarted");
+        }
     }
 }

@@ -23,6 +23,7 @@ public class PagerAdapter extends FragmentPagerAdapter {
     public PagerAdapter(FragmentManager fm, ArrayList<FeedFragment> fragments) {
         super(fm);
         this.fragments = fragments;
+
     }
 
     @Override
@@ -37,7 +38,10 @@ public class PagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return fragments.get(position).getArguments().getString("title");
+
+            return fragments.get(position).getArguments().getString("title");
+
+
     }
 
 

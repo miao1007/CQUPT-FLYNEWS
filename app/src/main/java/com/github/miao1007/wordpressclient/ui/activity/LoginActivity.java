@@ -4,11 +4,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -27,7 +25,7 @@ import cn.sharesdk.tencent.qzone.QZone;
  * Created by leon on 14/10/1.
  * Function : 基于ShareSDK的授权回调Activity
  */
-public class LoginActivity extends ActionBarActivity implements Handler.Callback,
+public class LoginActivity extends BackableActivity implements Handler.Callback,
         View.OnClickListener, PlatformActionListener {
 
     private static final int MSG_USERID_FOUND = 1;
@@ -47,14 +45,6 @@ public class LoginActivity extends ActionBarActivity implements Handler.Callback
         findViewById(R.id.activity_login_by_sinaweibo).setOnClickListener(this);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-            overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     //Handler.Callback
     @Override

@@ -1,10 +1,8 @@
 package com.github.miao1007.wordpressclient.ui.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -14,8 +12,8 @@ import com.github.miao1007.wordpressclient.info.comment.CommentResult;
 import com.github.miao1007.wordpressclient.model.Model;
 import com.github.miao1007.wordpressclient.ui.widget.SendCommentButton;
 import com.github.miao1007.wordpressclient.utils.UIutils;
-import com.github.miao1007.wordpressclient.utils.WPcommitInterface;
-import com.github.miao1007.wordpressclient.utils.WPpostInterface;
+import com.github.miao1007.wordpressclient.api.WPcommitInterface;
+import com.github.miao1007.wordpressclient.api.WPpostInterface;
 
 import java.util.HashMap;
 
@@ -26,7 +24,7 @@ import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class FeedbackActivity extends ActionBarActivity {
+public class FeedbackActivity extends BackableActivity {
 
     @InjectView(R.id.frag_commit_editText_email)
     EditText editText_email;
@@ -74,6 +72,7 @@ public class FeedbackActivity extends ActionBarActivity {
                             .submitComment(commitMap, new Callback<CommentResult>() {
                                 @Override
                                 public void success(CommentResult commentResult, Response response) {
+                                    v.setCurrentState(SendCommentButton.STATE_DONE);
                                     if (commentResult.getStatus().equals("error")) {
                                         UIutils.disMsg(FeedbackActivity.this, commentResult.getError());
                                     } else {
@@ -93,25 +92,11 @@ public class FeedbackActivity extends ActionBarActivity {
     }
 
 
-        @Override
-        public boolean onCreateOptionsMenu (Menu menu){
-            // Inflate the menu; this adds items to the action bar if it is present.
-            getMenuInflater().inflate(R.menu.feedback, menu);
-            return true;
-        }
-
-        @Override
-        public boolean onOptionsItemSelected (MenuItem item){
-            // Handle action bar item clicks here. The action bar will
-            // automatically handle clicks on the Home/Up button, so long
-            // as you specify a parent activity in AndroidManifest.xml.
-            int id = item.getItemId();
-            if (id == R.id.action_settings) {
-                return true;
-            } else if (id == android.R.id.home) {
-                finish();
-                overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
-            }
-            return super.onOptionsItemSelected(item);
-        }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.feedback, menu);
+        return true;
     }
+
+}

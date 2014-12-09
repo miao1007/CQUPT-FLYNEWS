@@ -1,5 +1,6 @@
 package com.github.miao1007.wordpressclient.ui.fragment;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,18 +11,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.animation.LayoutAnimationController;
 import android.widget.Toast;
 
 import com.github.miao1007.wordpressclient.R;
+import com.github.miao1007.wordpressclient.api.WPpostInterface;
 import com.github.miao1007.wordpressclient.info.api.PostsWithStatus;
 import com.github.miao1007.wordpressclient.info.post.Post;
+import com.github.miao1007.wordpressclient.model.Model;
 import com.github.miao1007.wordpressclient.ui.adapter.FeedAdapter;
 import com.github.miao1007.wordpressclient.utils.NetworkUtils;
 import com.github.miao1007.wordpressclient.utils.UIutils;
-import com.github.miao1007.wordpressclient.utils.WPpostInterface;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,7 +45,7 @@ public class FeedFragment extends Fragment {
 
 
     String TAG = makeLogTag(FeedFragment.class);
-
+    String CURRENT_END_POINT_BAK = Model.END_POINT_BAK;
 
     /**
      * Injected Vies
@@ -66,11 +65,11 @@ public class FeedFragment extends Fragment {
     private boolean isRefresh = false;
     HashMap<String, Object> currentQueryMap = new HashMap<String, Object>();
 
-    public static FeedFragment newInstance(String title, String slug,String query) {
+    public static FeedFragment newInstance(String title, String slug, String query) {
         FeedFragment fragment = new FeedFragment();
         Bundle args = new Bundle();
         args.putString(WPpostInterface.TITLE, title);
-        args.putString(WPpostInterface.PAGE, slug);
+        args.putString(WPpostInterface.CATEGORY_SLUG, slug);
         args.putString(WPpostInterface.SEARCH, query);
         fragment.setArguments(args);
         return fragment;
@@ -79,7 +78,11 @@ public class FeedFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG, "onCreate");
+        Log.d(TAG, "onCreate" + getArguments().getString(WPpostInterface.TITLE));
+        currentQueryMap.put(WPpostInterface.CATEGORY_SLUG, getArguments().getString(WPpostInterface.CATEGORY_SLUG));
+        currentQueryMap.put(WPpostInterface.SEARCH, getArguments().getString(WPpostInterface.SEARCH));
+        currentQueryMap.put(WPpostInterface.PAGE, 1);
+
 
     }
 
@@ -89,15 +92,11 @@ public class FeedFragment extends Fragment {
         Log.d(TAG, "onCreateView");
         View view = inflater.inflate(R.layout.fragment_feed, container, false);
         ButterKnife.inject(this, view);
-
-        currentQueryMap.put(WPpostInterface.CATEGORY, getArguments().getString(WPpostInterface.CATEGORY));
-        currentQueryMap.put(WPpostInterface.SEARCH,getArguments().getString(WPpostInterface.SEARCH));
-
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 currentQueryMap.put(WPpostInterface.PAGE, 1);
-                loadPage(currentQueryMap);
+                loadPage();
 
             }
         });
@@ -105,12 +104,8 @@ public class FeedFragment extends Fragment {
         adapter = new FeedAdapter(posts, getActivity());
 
         mLayoutManager = new LinearLayoutManager(getActivity());
-        Animation fadeIn = AnimationUtils.loadAnimation(getActivity(), android.R.anim.slide_in_left);
-        fadeIn.setDuration(250);
-        LayoutAnimationController layoutAnimationController = new LayoutAnimationController(fadeIn);
-        mRecyclerView.setLayoutAnimation(layoutAnimationController);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setHasFixedSize(true);
+        //mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(adapter);
         mRecyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
 
@@ -122,18 +117,19 @@ public class FeedFragment extends Fragment {
                 //lastVisibleItem >= totalItemCount - 4 表示剩下4个item自动加载
                 // dy>0 表示向下滑动
                 if (lastVisibleItem >= totalItemCount - 4 && dy > 0) {
-                    loadPage(currentQueryMap);
+                    loadPage();
+                    UIutils.disMsg(getActivity(), getString(R.string.fragment_feed_loading));
                 }
             }
         });
 
-//        mSwipeRefreshLayout.post(new Runnable() {
-//            @Override
-//            public void run() {
-//                mSwipeRefreshLayout.setRefreshing(true);
-//                loadPage(new HashMap<String, Object>());
-//            }
-//        });
+        mSwipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                mSwipeRefreshLayout.setRefreshing(true);
+                loadPage();
+            }
+        });
         return view;
     }
 
@@ -145,25 +141,24 @@ public class FeedFragment extends Fragment {
     }
 
 
-    public void loadPage(HashMap<String, Object> stringObjectMap) {
-        LOGD(TAG, "Http-Get Query is " + stringObjectMap.toString());
-        currentQueryMap = stringObjectMap;
+    public void loadPage() {
+        LOGD(TAG, currentQueryMap.toString());
         if (NetworkUtils.isNetworkAvailable(getActivity())) {
             if (isRefresh) {
                 LOGD(TAG, "swipe is Refresh page : ,Ignore mannual refresh!");
             } else {
 
                 new RestAdapter.Builder()
-                        .setEndpoint("http://162.243.252.57/api")
+                        .setEndpoint(CURRENT_END_POINT_BAK)
                         .setLogLevel(RestAdapter.LogLevel.BASIC)
                         .build()
                         .create(WPpostInterface.class)
-                        .getPostsByPage(stringObjectMap, new Callback<PostsWithStatus>() {
+                        .getPostsByPage(currentQueryMap, new Callback<PostsWithStatus>() {
 
                             @Override
                             public void success(PostsWithStatus postsWithStatus, Response response) {
                                 isRefresh = false;
-                                if (mSwipeRefreshLayout != null){
+                                if (mSwipeRefreshLayout != null) {
                                     mSwipeRefreshLayout.setRefreshing(false);
                                 }
                                 //Update page query
@@ -190,10 +185,12 @@ public class FeedFragment extends Fragment {
                             @Override
                             public void failure(RetrofitError error) {
                                 isRefresh = false;
-                                if (mSwipeRefreshLayout != null){
+                                if (mSwipeRefreshLayout != null) {
                                     mSwipeRefreshLayout.setRefreshing(false);
                                 }
                                 UIutils.disErr(getActivity(), error);
+                                CURRENT_END_POINT_BAK = Model.END_POINT;
+                                UIutils.disMsg(getActivity(),"使用备用服务器，请刷新！");
                             }
                         });
             }
@@ -205,4 +202,21 @@ public class FeedFragment extends Fragment {
     }
 
 
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        LOGD(TAG,"onAttach");
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        LOGD(TAG,"onDetach");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        LOGD(TAG,"onDestroy");
+    }
 }

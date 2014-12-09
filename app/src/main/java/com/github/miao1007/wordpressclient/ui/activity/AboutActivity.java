@@ -1,22 +1,30 @@
 package com.github.miao1007.wordpressclient.ui.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.github.miao1007.wordpressclient.R;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
-public class AboutActivity extends ActionBarActivity {
+
+public class AboutActivity extends BackableActivity {
+
+    @InjectView(R.id.toolbar)
+    Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         setContentView(R.layout.activity_about);
+        ButterKnife.inject(this);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
 

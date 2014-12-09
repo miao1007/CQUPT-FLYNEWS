@@ -6,7 +6,7 @@
 
     <view
         android:id="@+id/slidingtab"
-        android:background="?attr/colorPrimary"
+        android:background="@color/style_color_primary_dark"
         class="com.github.miao1007.wordpressclient.ui.widget.SlidingTabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

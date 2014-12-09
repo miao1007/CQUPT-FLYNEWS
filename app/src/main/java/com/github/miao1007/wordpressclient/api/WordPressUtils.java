@@ -4,7 +4,7 @@
  * Feel free to ues it!
  */
 
-package com.github.miao1007.wordpressclient.utils;
+package com.github.miao1007.wordpressclient.api;
 
 
 import com.github.miao1007.wordpressclient.info.api.CategoriesWithStatus;

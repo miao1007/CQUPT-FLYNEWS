@@ -127,5 +127,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.MyViewHolder> 
         animateItems = animated;
         notifyDataSetChanged();
     }
+
+
 }
 
