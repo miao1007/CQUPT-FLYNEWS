@@ -20,8 +20,6 @@ public interface WPpostInterface {
     public static String PAGE = "page";
     public static String SEARCH = "s";
     public static String CATEGORY_SLUG = "category_name";
-    public static String CATEGORY_ID = "cat";
-
 
     @GET("/get_posts")
     void getPostsByPage(@QueryMap Map<String,Object> option, Callback<PostsWithStatus> postsWithStatusCallback);

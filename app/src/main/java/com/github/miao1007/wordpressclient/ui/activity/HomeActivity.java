@@ -152,9 +152,9 @@ public class HomeActivity extends ActionBarActivity
                     public void failure(RetrofitError error) {
 
                         UIutils.disErr(HomeActivity.this, error);
-                        if (error.getKind() == RetrofitError.Kind.HTTP){
+                        if (error.getKind() == RetrofitError.Kind.HTTP) {
                             CURRENT_END_POINT_BAK = Model.END_POINT;
-                            UIutils.disMsg(HomeActivity.this,"使用备用服务器，请刷新！");
+                            UIutils.disMsg(HomeActivity.this, "使用备用服务器，请刷新！");
                         }
                     }
                 });

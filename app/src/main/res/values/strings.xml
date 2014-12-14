@@ -160,7 +160,7 @@
     <string name="title_activity_about">关于</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">设置</string>
-    <string name="title_activity_feedback">反馈意见</string>
+    <string name="title_activity_feedback">Commit</string>
     <string name="title_activity_search">搜索</string>
     <string name="title_activity_home">校园飞鸽</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>

@@ -8,12 +8,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.github.miao1007.wordpressclient.R;
+import com.github.miao1007.wordpressclient.api.WPcommitInterface;
+import com.github.miao1007.wordpressclient.api.WPpostInterface;
 import com.github.miao1007.wordpressclient.info.comment.CommentResult;
 import com.github.miao1007.wordpressclient.model.Model;
 import com.github.miao1007.wordpressclient.ui.widget.SendCommentButton;
 import com.github.miao1007.wordpressclient.utils.UIutils;
-import com.github.miao1007.wordpressclient.api.WPcommitInterface;
-import com.github.miao1007.wordpressclient.api.WPpostInterface;
 
 import java.util.HashMap;
 
@@ -66,7 +66,7 @@ public class FeedbackActivity extends BackableActivity {
 
                     new RestAdapter.Builder()
                             .setLogLevel(RestAdapter.LogLevel.FULL)
-                            .setEndpoint(Model.END_POINT)
+                            .setEndpoint(Model.END_POINT_BAK)
                             .build()
                             .create(WPpostInterface.class)
                             .submitComment(commitMap, new Callback<CommentResult>() {
@@ -76,7 +76,7 @@ public class FeedbackActivity extends BackableActivity {
                                     if (commentResult.getStatus().equals("error")) {
                                         UIutils.disMsg(FeedbackActivity.this, commentResult.getError());
                                     } else {
-                                        UIutils.disMsg(FeedbackActivity.this, commentResult.getDate() + " 提交成功");
+                                        UIutils.disMsg(FeedbackActivity.this, "server:" + commentResult.getDate() + " 提交成功");
                                     }
                                 }
 
